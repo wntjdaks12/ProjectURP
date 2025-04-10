@@ -25,6 +25,20 @@ public class Character : Actor, IStat
         // -------------------------------------------------------------------------------------------------------
 
         OnDeathEvent += OnRemoveData;
+        OnDeathEvent += () =>
+        {
+            var dropItemInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<DropItemInfo>(nameof(DropItemInfo), Id);
+
+            foreach (var data in dropItemInfo.DropItemDatas)
+            {
+                if (data.DropProbability >= UnityEngine.Random.Range(1, 101))
+                {
+                    var dropItemObj = GameApplication.Instance.EntityController.Spawn<DropItem, DropItemObject>(70001, Transform.position, Quaternion.identity);
+                    dropItemObj.DropItemData = data;
+                }
+
+            }
+        };
     }
 
     public override void OnHit(int damage)

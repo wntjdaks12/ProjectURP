@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3374262883582996119}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3374262884913835663}
@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3374262884913835663}
   - component: {fileID: 3374262884913835662}
+  - component: {fileID: 3857537951517063190}
   m_Layer: 0
   m_Name: BasicDropItem
   m_TagString: Untagged
@@ -131,3 +132,19 @@ MonoBehaviour:
   <animator>k__BackingField: {fileID: 0}
   <animationHandler>k__BackingField: {fileID: 0}
   <Rigidbody>k__BackingField: {fileID: 0}
+  meshRenderer: {fileID: 3374262883582996122}
+  pickupAvailableTime: 0.5
+  pickupSpeed: 10
+--- !u!65 &3857537951517063190
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374262884913835657}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
