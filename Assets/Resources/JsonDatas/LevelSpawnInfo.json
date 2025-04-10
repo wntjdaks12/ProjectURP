@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "WorldNumber": 1,
+    "StageNumber": 1,
+    "EntityInfos": [
+      {
+        "EntityId": 20001,
+        "EntityCount": 5
+      }
+    ]
+  }
+]
+  
