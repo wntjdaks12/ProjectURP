@@ -31,6 +31,7 @@ public class GameModel : MonoBehaviour
         PresetData.LoadData<Skill>(nameof(Skill), "JsonDatas/Skill"); // 스킬 소환 개체 (스킬 발동으로 생성된 독립된 스킬 개체)
         PresetData.LoadData<SummonSkillDetailInfo>(nameof(SummonSkillDetailInfo), "JsonDatas/SummonSkillDetailInfo"); // 스킬 소환 개체 디테일 정보
         PresetData.LoadData<DropItemInfo>(nameof(DropItemInfo), "JsonDatas/DropItemInfo"); // 드랍 아이템 정보
+        PresetData.LoadData<CurrencyInfo>(nameof(CurrencyInfo), "JsonDatas/DropItemInfo"); // 재화 정보
         // ----------------------------------------------------------------------------------------------------------------
     }
 }
