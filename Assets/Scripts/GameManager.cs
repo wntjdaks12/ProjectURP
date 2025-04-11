@@ -5,11 +5,9 @@ public class GameManager : MonoBehaviour
 {
     private void Start()
     {
-        foreach (var heroInfo in PlayerManager.Instance.heroInfos)
-        {
-            var obj = GameApplication.Instance.EntityController.Spawn<Hero, HeroObject>(heroInfo.heroId, Vector3.zero, Quaternion.identity);
+        var palyerManager = PlayerManager.Instance;
+        palyerManager.PlayerViewModel.HeroObject = GameApplication.Instance.EntityController.Spawn<Hero, HeroObject>(palyerManager.PlayerViewModel.HeroId, Vector3.zero, Quaternion.identity);
 
-            var skill = new SkillSystem(50001, obj);
-        }
+        var skill = new SkillSystem(50001, palyerManager.PlayerViewModel.HeroObject);
     }
 }

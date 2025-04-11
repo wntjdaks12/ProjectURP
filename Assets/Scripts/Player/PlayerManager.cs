@@ -7,12 +7,12 @@ public class PlayerManager : MonoBehaviour
     private static PlayerManager instance;
     public static PlayerManager Instance { get => instance ??= FindAnyObjectByType<PlayerManager>(); }
 
-    public List<HeroInfo> heroInfos;
-}
+    public PlayerViewModel PlayerViewModel { get; private set; }
 
-[Serializable]
-public class HeroInfo
-{
-    public int heroId;
-    public List<int> itemIds;
+    private void Awake()
+    {
+        PlayerViewModel = new PlayerViewModel();
+        PlayerViewModel.HeroId = 10001; // 임시로 추가
+        PlayerViewModel.AddItem(30001); // 임시로 추가
+    }
 }
