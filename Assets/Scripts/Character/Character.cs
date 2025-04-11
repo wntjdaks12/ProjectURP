@@ -4,6 +4,7 @@ using UnityEngine;
 public class Character : Actor, IStat
 {
     public event Action OnDeathEvent;
+    public event Action<int> OnHitEvent;
 
     // IStat ±¸Çö
     public StatAbility StatAbility { get; set; }
@@ -24,8 +25,14 @@ public class Character : Actor, IStat
         StatAbility.CurrentBasicAttackRange = StatAbility.BasicAttackRange;
         // -------------------------------------------------------------------------------------------------------
 
+        OnHitEvent += (damage) =>
+        {
+            var damagePopupObj = GameApplication.Instance.EntityController.Spawn<DamagePopup, DamagePopupObject>(90001, Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity, UIManager.Instance.DamageCannvas.transform);
+            damagePopupObj.UpdteUI(damage);
+        };
+
         OnDeathEvent += OnRemoveData;
-        OnDeathEvent += () =>
+        OnDeathEvent += () =>   
         {
             var dropItemInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<DropItemInfo>(nameof(DropItemInfo), Id);
 
@@ -48,6 +55,8 @@ public class Character : Actor, IStat
         if (resCurHp > 0)
         {
             StatAbility.CurrentHp = resCurHp;
+
+            OnHitEvent?.Invoke(damage);
         }
         else
         {

@@ -33,6 +33,7 @@ public class GameModel : MonoBehaviour
         PresetData.LoadData<DropItem>(nameof(DropItem), "JsonDatas/DropItem"); // 드랍 아이템 정보
         PresetData.LoadData<DropItemInfo>(nameof(DropItemInfo), "JsonDatas/DropItemInfo"); // 드랍 아이템 정보
         PresetData.LoadData<CurrencyInfo>(nameof(CurrencyInfo), "JsonDatas/CurrencyInfo"); // 재화 정보
+        PresetData.LoadData<DamagePopup>(nameof(DamagePopup), "JsonDatas/DamagePopup"); // 데미지 팝업
         // ----------------------------------------------------------------------------------------------------------------
     }
 }
