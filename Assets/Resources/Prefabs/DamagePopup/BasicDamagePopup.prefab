@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7809119958404736370}
   - component: {fileID: 7809119958404736333}
   - component: {fileID: 1345021363190776908}
+  - component: {fileID: 8166566068092344163}
   m_Layer: 5
   m_Name: BasicDamagePopup
   m_TagString: Untagged
@@ -152,3 +153,24 @@ MonoBehaviour:
   <animationHandler>k__BackingField: {fileID: 0}
   <Rigidbody>k__BackingField: {fileID: 0}
   damageText: {fileID: 7809119958404736333}
+--- !u!95 &8166566068092344163
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7809119958404736335}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39f9f27d07d122a45bcf82aa95d5e4ae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
