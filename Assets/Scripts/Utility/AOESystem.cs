@@ -49,7 +49,7 @@ public class AOESystem : MonoBehaviour
             {
                 skillObject.CreateVFX(actorObj.HitNode.position, Quaternion.identity);
 
-                actorObj.OnHit(skillObject.SkillSystem.StatAbility.AttackPower);
+                actorObj.OnHit(skillObject.SkillSystem.CalculateDamage());
             }
         }
 

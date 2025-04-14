@@ -11,6 +11,8 @@ public class HeroObject : CharacterObject
         Hero = entity as Hero;
 
         ChangeLayersRecursively(transform, "Player");
+
+        var skill = new SkillSystem(50001, this);// юс╫ц
     }
 
     public virtual void SetExp(int exp)

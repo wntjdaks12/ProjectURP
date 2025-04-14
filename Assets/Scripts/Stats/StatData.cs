@@ -10,4 +10,11 @@ public class StatData : Data
     {
         return Stats.Where(x => x.StatType == statType).Sum(x => x.Value);
     }
+
+    public void UpdateStatValue(Stat.StatTypes statType, float value)
+    {
+        var stat = Stats.Where(x => x.StatType == statType).FirstOrDefault();
+
+        stat.Value += value;
+    }
 }

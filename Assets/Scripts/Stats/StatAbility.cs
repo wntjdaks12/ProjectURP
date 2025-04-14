@@ -35,6 +35,20 @@ public class StatAbility
         StatInfos.Add(new StatInfo(statDataType, statData));
     }
 
+    public void UpdateStatData(StatInfo.StatDataType statDataType, Stat.StatTypes statType, float value)
+    {
+        var statInfo = StatInfos.Where(x => x.statDataType == statDataType).FirstOrDefault();
+
+        if (statInfo == null)
+        {
+            UnityEngine.Debug.Log(statDataType);
+        }
+        else
+        {
+            statInfo.statData.UpdateStatValue(statType, value);
+        }
+    }
+
     /// <summary>
     /// 스텟 데이터 삭제
     /// </summary>
@@ -134,5 +148,15 @@ public class StatAbility
     public float SkillCooldownTime
     {
         get { return StatInfos.Sum(x => x.statData.GetTotalStatValue(Stat.StatTypes.SkillCooldownTime)); }
+    }
+    // 물리 공격력 계수
+    public float AttackDamageMultiplier
+    {
+        get { return StatInfos.Sum(x => x.statData.GetTotalStatValue(Stat.StatTypes.AttackDamageMultiplier)); }
+    }
+    // 마법 공격력 계수
+    public float AbilityPowerMultiplier
+    {
+        get { return StatInfos.Sum(x => x.statData.GetTotalStatValue(Stat.StatTypes.AbilityPowerMultiplier)); }
     }
 }

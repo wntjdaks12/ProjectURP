@@ -1,12 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHUDEXPBar : MonoBehaviour
+public class PlayerHUDEXPBar : View
 {
     [SerializeField] private Image currentExpImg;
 
-    public void Init(int curExp, int MaxExp)
+    private int curExp;
+    private int maxExp;
+
+    public void Init(int curExp, int maxExp)
     {
-        currentExpImg.fillAmount = (float)curExp / MaxExp;
+        this.curExp = curExp;
+        this.maxExp = maxExp;
+
+        UpdateUI();
+    }
+
+    public override void UpdateUI()
+    {
+        currentExpImg.fillAmount = (float)curExp / maxExp;
     }
 }

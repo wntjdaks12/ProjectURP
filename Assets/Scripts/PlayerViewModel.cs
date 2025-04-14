@@ -72,7 +72,6 @@ public class PlayerViewModel : ViewModel
         OnPropertyChanged();
     }
 
-    
     public PlayerViewModel()
     {
         itemIds = new int[3];

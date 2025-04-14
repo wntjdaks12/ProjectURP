@@ -12,12 +12,12 @@ public class SkillSystem
     // IStat 구현
     public StatAbility StatAbility { get; set; }
 
-    private CharacterObject caster;
+    public CharacterObject Caster { get; private set; }
 
     public SkillSystem(int id, CharacterObject caster)
     {
         Id = id;
-        this.caster = caster;
+        Caster = caster;
 
         SkillInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<SkillInfo>(nameof(SkillInfo), id);
 
@@ -52,5 +52,15 @@ public class SkillSystem
     public void Use(CharacterObject caster)
     {
         skillBehavior.Use(caster);
+    }
+
+    // 데미지 계산
+    public int CalculateDamage()
+    {
+        // 시전자 공격력 비례 계수 계산
+        var resAttackDamage = (int) (Caster.Character.StatAbility.AttackDamage * StatAbility.AttackDamageMultiplier);
+        var resAbilityPower = (int)(Caster.Character.StatAbility.AbilityPower * StatAbility.AbilityPowerMultiplier);
+
+        return resAttackDamage + resAbilityPower;
     }
 }

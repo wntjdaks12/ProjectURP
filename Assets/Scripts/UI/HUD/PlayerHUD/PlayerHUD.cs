@@ -1,12 +1,13 @@
 using System.ComponentModel;
 using UnityEngine;
 
-public class PlayerHUD : MonoBehaviour
+public class PlayerHUD : View
 {
     public PlayerViewModel ViewModel { get; private set; }
 
     [SerializeField] private PlayerHUDItemSlot[] itemSlots;
     [SerializeField] private PlayerHUDEXPBar expBar;
+    [SerializeField] private StatContents statContents;
 
     // 나중에 한 스크립트에서 초기화 관리
     private void Start()
@@ -21,6 +22,8 @@ public class PlayerHUD : MonoBehaviour
             ViewModel = PlayerManager.Instance.PlayerViewModel;
             ViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
+
+
     }
 
     public void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -28,6 +31,8 @@ public class PlayerHUD : MonoBehaviour
         if (e.PropertyName == "HeroObject")
         {
             UpdateUI();
+
+            statContents.Init(ViewModel);
         }
         else if (e.PropertyName == "Exp")
         {
@@ -35,7 +40,7 @@ public class PlayerHUD : MonoBehaviour
         }
     }
 
-    public void UpdateUI()
+    public override void UpdateUI()
     {
         var count = ViewModel.GetCount();
 

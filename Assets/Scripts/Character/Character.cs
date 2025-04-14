@@ -20,6 +20,15 @@ public class Character : Actor, IStat
         var statData = GameApplication.Instance.GameModel.PresetData.ReturnData<StatData>(nameof(StatData), Id);
         StatAbility.AddStatData(StatAbility.StatInfo.StatDataType.Main, statData);
 
+        // 서브 스탯 추가
+        var subStatData = new StatData();
+        subStatData.Stats = new System.Collections.Generic.List<Stat>();
+        subStatData.Stats.Add(new Stat(Stat.StatTypes.MaxHp, 0));
+        subStatData.Stats.Add(new Stat(Stat.StatTypes.AttackDamage, 0));
+        subStatData.Stats.Add(new Stat(Stat.StatTypes.AbilityPower, 0));
+        subStatData.Stats.Add(new Stat(Stat.StatTypes.MaxSpeed, 0));
+        StatAbility.AddStatInfo(new StatAbility.StatInfo(StatAbility.StatInfo.StatDataType.Sub, subStatData));
+
         StatAbility.CurrentSpeed = StatAbility.MaxSpeed;
         StatAbility.CurrentHp = StatAbility.MaxHp;
         StatAbility.CurrentBasicAttackRange = StatAbility.BasicAttackRange;

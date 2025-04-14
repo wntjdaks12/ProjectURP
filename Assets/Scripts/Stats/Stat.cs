@@ -13,7 +13,9 @@ public class Stat
         ViewingAngle = 5,
         BasicAttackRange = 6,
         SkillRange = 7,
-        SkillCooldownTime = 8
+        SkillCooldownTime = 8,
+        AttackDamageMultiplier = 9,
+        AbilityPowerMultiplier = 10
     }
 
     public Stat(StatTypes statType, float value)

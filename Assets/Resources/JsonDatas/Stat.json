@@ -8,7 +8,7 @@
       },
       {
         "statType": 1,
-        "value": 50
+        "value": 1
       },
       {
         "statType": 2,
@@ -49,12 +49,12 @@
     "id": 50001,
     "stats": [
       {
-        "statType": 1,
-        "value": 3
-      },
-      {
         "statType": 7,
         "value": 100
+      },
+      {
+        "statType": 10,
+        "value": 2
       }
     ]
   }

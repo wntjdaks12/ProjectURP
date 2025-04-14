@@ -7,7 +7,5 @@ public class GameManager : MonoBehaviour
     {
         var palyerManager = PlayerManager.Instance;
         palyerManager.PlayerViewModel.HeroObject = GameApplication.Instance.EntityController.Spawn<Hero, HeroObject>(palyerManager.PlayerViewModel.HeroId, Vector3.zero, Quaternion.identity);
-
-        var skill = new SkillSystem(50001, palyerManager.PlayerViewModel.HeroObject);
     }
 }

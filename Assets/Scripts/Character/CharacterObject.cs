@@ -5,7 +5,7 @@ public class CharacterObject : ActorObject
 {
     protected NavMeshAgent navMeshAgent;
 
-    private Character character;
+    public Character Character { get; private set; }
 
     private void Awake()
     {
@@ -16,10 +16,10 @@ public class CharacterObject : ActorObject
     {
         base.Init(entity);
 
-        character = entity as Character;
+        Character = entity as Character;
 
         // 네비 메쉬 초기화
-        navMeshAgent.speed = character.StatAbility.CurrentSpeed;
+        navMeshAgent.speed = Character.StatAbility.CurrentSpeed;
     }
 
     public virtual void OnMove(Vector3 position)
@@ -31,6 +31,6 @@ public class CharacterObject : ActorObject
     {
         base.OnHit(damage);
 
-        character.OnHit(damage);
+        Character.OnHit(damage);
     }
 }
