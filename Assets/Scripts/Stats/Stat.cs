@@ -15,7 +15,8 @@ public class Stat
         SkillRange = 7,
         SkillCooldownTime = 8,
         AttackDamageMultiplier = 9,
-        AbilityPowerMultiplier = 10
+        AbilityPowerMultiplier = 10,
+        PerSecond = 11
     }
 
     public Stat(StatTypes statType, float value)

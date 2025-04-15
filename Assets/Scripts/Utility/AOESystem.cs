@@ -55,7 +55,7 @@ public class AOESystem : MonoBehaviour
 
         curTime += Time.deltaTime;
 
-        if (curTime >= 0.1f)
+        if (curTime >= skillObject.SkillSystem.StatAbility.PerSecond)
         {
             curTime = 0;
         }

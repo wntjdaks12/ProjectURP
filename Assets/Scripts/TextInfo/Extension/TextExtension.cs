@@ -9,7 +9,7 @@ public static class TextExtension
             if (i == 0)
             {
                 str = str.Replace("?skillAbilityPowerMultiplier", statAbilitys[i].AbilityPowerMultiplier.ToString());
-                str = str.Replace("?skillPerSecond", "0.5");
+                str = str.Replace("?skillPerSecond", statAbilitys[i].PerSecond.ToString());
             }
             else if (i == 1)
             {

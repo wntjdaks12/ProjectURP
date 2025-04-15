@@ -159,4 +159,9 @@ public class StatAbility
     {
         get { return StatInfos.Sum(x => x.statData.GetTotalStatValue(Stat.StatTypes.AbilityPowerMultiplier)); }
     }
+    // 초당 횟수
+    public float PerSecond
+    {
+        get { return StatInfos.Sum(x => x.statData.GetTotalStatValue(Stat.StatTypes.PerSecond)); }
+    }
 }

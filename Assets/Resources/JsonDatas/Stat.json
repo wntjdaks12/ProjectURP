@@ -55,6 +55,10 @@
       {
         "statType": 10,
         "value": 2
+      },
+      {
+        "statType": 11,
+        "value": 0.5
       }
     ]
   }
