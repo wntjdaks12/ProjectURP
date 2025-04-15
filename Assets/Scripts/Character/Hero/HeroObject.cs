@@ -4,6 +4,8 @@ public class HeroObject : CharacterObject
 {
     public Hero Hero { get; private set; }
 
+    public SkillSystem skillSystem;
+
     public override void Init(Entity entity)
     {
         base.Init(entity);
@@ -12,7 +14,7 @@ public class HeroObject : CharacterObject
 
         ChangeLayersRecursively(transform, "Player");
 
-        var skill = new SkillSystem(50001, this);// 임시
+        skillSystem = new SkillSystem(50001, this);// 임시
     }
 
     public virtual void SetExp(int exp)

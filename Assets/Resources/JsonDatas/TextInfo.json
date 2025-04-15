@@ -1,0 +1,8 @@
+[
+  {
+    "id": 30001,
+    "NameEn": "LightningHeart",
+    "DescriptionEn": "Generates lightning energy around the character, continuously dealing damage to enemies within range.<br><br>Hits per second: ?skillPerSecond<br>Damage: <color=#DD81FF>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color>"
+  }
+]
+  

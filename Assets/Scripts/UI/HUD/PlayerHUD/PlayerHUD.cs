@@ -22,8 +22,6 @@ public class PlayerHUD : View
             ViewModel = PlayerManager.Instance.PlayerViewModel;
             ViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
-
-
     }
 
     public void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
