@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class HealSkillBehavior : ISkillBehavior
@@ -11,5 +12,8 @@ public class HealSkillBehavior : ISkillBehavior
 
     public void Use(CharacterObject caster)
     {
+        if (caster == null) return;
+
+        GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(SkillSystem.SkillInfo.VFXId, Vector3.zero, Quaternion.identity, caster.transform);
     }
 }

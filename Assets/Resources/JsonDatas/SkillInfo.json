@@ -3,13 +3,15 @@
     "id": 50001,
     "skillType": 0,
     "strategyType": 2,
-    "castingTime": 3
+    "looping": 0
   },
   {
     "id": 50002,
     "skillType": 0,
     "strategyType": 1,
-    "castingTime": 3
+    "vfxId": 40003,
+    "cooldwonTime": 2,
+    "looping": 1
   }
 ]
   

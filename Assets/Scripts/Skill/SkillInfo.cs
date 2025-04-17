@@ -17,5 +17,7 @@ public class SkillInfo : Data
 
     public StrategyTypes StrategyType { get; set; }
 
-    public float CastingTime { get; set; } // 시전 시간
+    public int VFXId { get; set; }
+    public float CooldwonTime { get; set; }
+    public bool Looping { get; set; }
 }

@@ -38,7 +38,14 @@ public class SkillSystem
 
         if (SkillInfo.SkillType == SkillInfo.SkillTypes.Passive)
         {
-            Use(caster);
+            if (!SkillInfo.Looping)
+            {
+                Use(caster);
+            }
+            else
+            {
+                CoroutineHelper.StartCoroutine(UseAsync(caster));
+            }
         }
     }
 
@@ -52,6 +59,16 @@ public class SkillSystem
     public void Use(CharacterObject caster)
     {
         skillBehavior.Use(caster);
+    }
+
+    public IEnumerator UseAsync(CharacterObject caster)
+    {
+        while (true)
+        {
+            skillBehavior.Use(caster);
+
+            yield return new WaitForSeconds(SkillInfo.CooldwonTime);
+        }
     }
 
     // 데미지 계산

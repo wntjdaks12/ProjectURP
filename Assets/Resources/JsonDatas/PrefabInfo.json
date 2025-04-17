@@ -16,6 +16,10 @@
     "path": "Prefabs/VFXs/LightningHeartHitVFX"
   },
   {
+    "id": 40003,
+    "path": "Prefabs/VFXs/TomeofLifeVFX"
+  },
+  {
     "id": 60001,
     "path": "Prefabs/SkillObjects/LightningHeartSkillObject"
   },
