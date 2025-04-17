@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 public class PlayerViewModel : ViewModel
 {
@@ -50,12 +51,20 @@ public class PlayerViewModel : ViewModel
     private int[] itemIds;
     public void AddItem(int itemId)
     {
-        for (int i = 0; i < itemIds.Length; i++)
+        if (itemIds.Any(x => x == 0))
         {
-            if (itemIds[i] == 0)
+            for (int i = 0; i < itemIds.Length; i++)
             {
-                itemIds[i] = itemId; break;
+                if (itemIds[i] == 0)
+                {
+                    itemIds[i] = itemId; break;
+                }
             }
+
+            var item = GameApplication.Instance.GameModel.PresetData.ReturnData<Item>(nameof(Item), itemId);
+            heroObject.SetSkill(item.SkillId);
+
+            OnPropertyChanged();
         }
     }
 
@@ -68,6 +77,8 @@ public class PlayerViewModel : ViewModel
                 itemIds[i] = 0; break;
             }
         }
+
+        OnPropertyChanged();
     }
 
     public int GetItem(int index)

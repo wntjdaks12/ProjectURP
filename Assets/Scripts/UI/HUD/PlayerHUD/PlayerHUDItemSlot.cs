@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 
 public class PlayerHUDItemSlot : ItemSlot
@@ -12,7 +13,7 @@ public class PlayerHUDItemSlot : ItemSlot
             var heroObject = PlayerManager.Instance.PlayerViewModel.HeroObject;
 
             var heroStatAbility = heroObject.Hero.StatAbility;
-            var skillStatAbility = heroObject.skillSystem.StatAbility;
+            var skillStatAbility = heroObject.SkillSystem.StatAbility;
 
             var textInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<TextInfo>(nameof(TextInfo), itemId).Clone() as TextInfo;
             textInfo.DescriptionEn = textInfo.DescriptionEn.GetStatReplace(new StatAbility[2] { skillStatAbility, heroStatAbility });

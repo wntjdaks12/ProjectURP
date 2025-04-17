@@ -7,6 +7,8 @@ public class CharacterObject : ActorObject
 
     public Character Character { get; private set; }
 
+    public SkillSystem SkillSystem { get; private set; }
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -32,5 +34,10 @@ public class CharacterObject : ActorObject
         base.OnHit(damage);
 
         Character.OnHit(damage);
+    }
+
+    public void SetSkill(int skillId)
+    {
+        SkillSystem = new SkillSystem(skillId, this);
     }
 }

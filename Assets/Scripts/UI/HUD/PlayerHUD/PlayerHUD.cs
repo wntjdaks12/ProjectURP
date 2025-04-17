@@ -36,9 +36,21 @@ public class PlayerHUD : View
         {
             UpdateUI();
         }
+        else if (e.PropertyName == "AddItem")
+        {
+            UpdateItemSlots(); // 아이템 슬롯 업데이트
+        }
     }
 
+    #region UI 업데이트 관련
     public override void UpdateUI()
+    {
+        UpdateItemSlots(); // 아이템 슬롯 업데이트
+
+        expBar.Init(ViewModel.HeroObject.Hero.CurrentExp, ViewModel.HeroObject.Hero.MaxExp);
+    }
+        
+    private void UpdateItemSlots()
     {
         var count = ViewModel.GetCount();
 
@@ -46,9 +58,8 @@ public class PlayerHUD : View
         {
             var itemId = ViewModel.GetItem(i);
 
-            if(itemId != 0) itemSlots[i].Init(ViewModel.GetItem(i));
+            if (itemId != 0) itemSlots[i].Init(ViewModel.GetItem(i));
         }
-
-        expBar.Init(ViewModel.HeroObject.Hero.CurrentExp, ViewModel.HeroObject.Hero.MaxExp);
     }
+    #endregion
 }

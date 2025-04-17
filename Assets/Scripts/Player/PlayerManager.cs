@@ -13,6 +13,5 @@ public class PlayerManager : MonoBehaviour
     {
         PlayerViewModel = new PlayerViewModel();
         PlayerViewModel.HeroId = 10001; // 임시로 추가
-        PlayerViewModel.AddItem(30001); // 임시로 추가
     }
 }
