@@ -36,6 +36,13 @@ public class CharacterObject : ActorObject
         Character.OnHit(damage);
     }
 
+    public override void OnHeal(int healAmount)
+    {
+        base.OnHeal(healAmount);
+
+        Character.OnHeal(healAmount);
+    }
+
     public void SetSkill(int skillId)
     {
         SkillSystem = new SkillSystem(skillId, this);

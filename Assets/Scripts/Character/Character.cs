@@ -59,6 +59,8 @@ public class Character : Actor, IStat
 
     public override void OnHit(int damage)
     {
+        base.OnHit(damage);
+
         var resCurHp = StatAbility.CurrentHp - damage;
      
         if (resCurHp > 0)
@@ -72,6 +74,22 @@ public class Character : Actor, IStat
             StatAbility.CurrentHp = 0;
 
             OnDeathEvent?.Invoke();
+        }
+    }
+
+    public override void OnHeal(int healAmount)
+    {
+        base.OnHeal(healAmount);
+
+        var resCurHp = StatAbility.CurrentHp + healAmount;
+
+        if (resCurHp >= StatAbility.MaxHp)
+        {
+            StatAbility.CurrentHp = StatAbility.MaxHp;
+        }
+        else
+        {
+            StatAbility.CurrentHp = resCurHp;
         }
     }
 }
