@@ -5,6 +5,7 @@ public class Character : Actor, IStat
 {
     public event Action OnDeathEvent;
     public event Action<int> OnHitEvent;
+    public event Action<int> OnHealEvent;
 
     // IStat ±¸Çö
     public StatAbility StatAbility { get; set; }
@@ -40,6 +41,12 @@ public class Character : Actor, IStat
             damagePopupObj.UpdteUI(damage);
         };
 
+        OnHealEvent += (damage) =>
+        {
+            var damagePopupObj = GameApplication.Instance.EntityController.Spawn<DamagePopup, DamagePopupObject>(90002, Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity, UIManager.Instance.DamageCannvas.transform);
+            damagePopupObj.UpdteUI(damage);
+        };
+
         OnDeathEvent += OnRemoveData;
         OnDeathEvent += () =>   
         {
@@ -66,8 +73,6 @@ public class Character : Actor, IStat
         if (resCurHp > 0)
         {
             StatAbility.CurrentHp = resCurHp;
-
-            OnHitEvent?.Invoke(damage);
         }
         else
         {
@@ -75,6 +80,8 @@ public class Character : Actor, IStat
 
             OnDeathEvent?.Invoke();
         }
+
+        OnHitEvent?.Invoke(damage);
     }
 
     public override void OnHeal(int healAmount)
@@ -91,5 +98,7 @@ public class Character : Actor, IStat
         {
             StatAbility.CurrentHp = resCurHp;
         }
+
+        OnHealEvent?.Invoke(healAmount);
     }
 }

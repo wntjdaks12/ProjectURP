@@ -29,7 +29,11 @@
   },
   {
     "id": 90001,
-    "path": "Prefabs/DamagePopup/BasicDamagePopup"
+    "path": "Prefabs/DamagePopup/BasicDamagePopup_Damage"
+  },
+  {
+    "id": 90002,
+    "path": "Prefabs/DamagePopup/BasicDamagePopup_Heal"
   }
 ]
   

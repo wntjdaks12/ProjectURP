@@ -15,5 +15,7 @@ public class HealSkillBehavior : ISkillBehavior
         if (caster == null) return;
 
         GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(SkillSystem.SkillInfo.VFXId, Vector3.zero, Quaternion.identity, caster.transform);
+
+        caster.OnHeal(1);
     }
 }
