@@ -1,6 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
+// 스킬 전략 - 힐
 public class HealSkillBehavior : ISkillBehavior
 {
     public SkillSystem SkillSystem { get; set; }
