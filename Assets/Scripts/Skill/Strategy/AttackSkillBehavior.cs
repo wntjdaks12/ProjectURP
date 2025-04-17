@@ -1,8 +1,8 @@
-public class IAttackSkillBehavior : ISkillBehavior
+public class AttackSkillBehavior : ISkillBehavior
 {
     public SkillSystem SkillSystem { get; set; }
 
-    public IAttackSkillBehavior(SkillSystem skillSystem)
+    public AttackSkillBehavior(SkillSystem skillSystem)
     {
         SkillSystem = skillSystem;
     }

@@ -23,9 +23,9 @@ public class SkillSystem
 
         switch (SkillInfo.StrategyType)
         {
-            case SkillInfo.StrategyTypes.Attack: SetSkillBehavior(new IAttackSkillBehavior(this)); break; // 공격 스킬일 경우
+            case SkillInfo.StrategyTypes.Attack: SetSkillBehavior(new AttackSkillBehavior(this)); break; // 공격 스킬일 경우
             case SkillInfo.StrategyTypes.Heal: SetSkillBehavior(null); break; // 힐 스킬 구현 x
-            case SkillInfo.StrategyTypes.Summon: SetSkillBehavior(new ISummonSkillBehavior(this)); break; // 독립된 스킬 개체 생성
+            case SkillInfo.StrategyTypes.Summon: SetSkillBehavior(new SummonSkillBehavior(this)); break; // 독립된 스킬 개체 생성
         }
 
         // 스탯 관련 추가 ----------------------------------------------------------------------------------------

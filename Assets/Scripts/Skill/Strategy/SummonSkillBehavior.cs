@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class ISummonSkillBehavior : ISkillBehavior
+public class SummonSkillBehavior : ISkillBehavior
 {
     public SkillSystem SkillSystem { get; set; }
 
     private SummonSkillDetailInfo summonSkillDetailInfo;
 
-    public ISummonSkillBehavior(SkillSystem skillSystem)
+    public SummonSkillBehavior(SkillSystem skillSystem)
     {
         SkillSystem = skillSystem;
 
