@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Linq;
 
 public class CharacterObject : ActorObject
 {
@@ -7,11 +9,13 @@ public class CharacterObject : ActorObject
 
     public Character Character { get; private set; }
 
-    public SkillSystem SkillSystem { get; private set; }
+    private List<SkillSystem> SkillSystems;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+        SkillSystems = new List<SkillSystem>();
     }
 
     public override void Init(Entity entity)
@@ -45,6 +49,11 @@ public class CharacterObject : ActorObject
 
     public void SetSkill(int skillId)
     {
-        SkillSystem = new SkillSystem(skillId, this);
+        SkillSystems.Add(new SkillSystem(skillId, this));
+    }
+
+    public SkillSystem GetSkill(int skillId)
+    {
+        return SkillSystems.Where(x => x.Id == skillId).FirstOrDefault();
     }
 }

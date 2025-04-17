@@ -7,7 +7,7 @@
   {
     "id": 30002,
     "NameEn": "Tome of Life",
-    "DescriptionEn": "Instantly restores own health."
+    "DescriptionEn": "Instantly restores own health.<br><br>Heal Amount: <color=#53FF69>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color>"
   }
 ]
   
