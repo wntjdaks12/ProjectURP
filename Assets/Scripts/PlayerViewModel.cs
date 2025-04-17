@@ -17,6 +17,36 @@ public class PlayerViewModel : ViewModel
         }
     }
 
+    public int GetCount()
+    {
+        return itemIds.Length;
+    }
+
+    private HeroObject heroObject;
+    public HeroObject HeroObject 
+    {
+        get{ return heroObject;}
+        set 
+        {
+            if (heroObject != value)
+            {
+                heroObject = value;
+
+                OnPropertyChanged();
+            }
+        }
+    }
+
+    public void Exp(int exp)
+    {
+        heroObject.SetExp(exp);
+
+        OnPropertyChanged();
+    }
+
+
+    #region 아이템 관련
+
     private int[] itemIds;
     public void AddItem(int itemId)
     {
@@ -45,32 +75,7 @@ public class PlayerViewModel : ViewModel
         return itemIds[index];
     }
 
-    public int GetCount()
-    {
-        return itemIds.Length;
-    }
-
-    private HeroObject heroObject;
-    public HeroObject HeroObject 
-    {
-        get{ return heroObject;}
-        set 
-        {
-            if (heroObject != value)
-            {
-                heroObject = value;
-
-                OnPropertyChanged();
-            }
-        }
-    }
-
-    public void Exp(int exp)
-    {
-        heroObject.SetExp(exp);
-
-        OnPropertyChanged();
-    }
+    #endregion
 
     public PlayerViewModel()
     {
