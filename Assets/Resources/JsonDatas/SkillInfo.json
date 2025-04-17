@@ -4,6 +4,12 @@
     "skillType": 0,
     "strategyType": 2,
     "castingTime": 3
+  },
+  {
+    "id": 50002,
+    "skillType": 0,
+    "strategyType": 1,
+    "castingTime": 3
   }
 ]
   
