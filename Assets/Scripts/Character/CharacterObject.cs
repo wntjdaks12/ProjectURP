@@ -28,9 +28,13 @@ public class CharacterObject : ActorObject
         navMeshAgent.speed = Character.StatAbility.CurrentSpeed;
     }
 
+
     public virtual void OnMove(Vector3 position)
     {
+        Character.OnMove();
+
         navMeshAgent.destination = position;
+        navMeshAgent.speed = Character.StatAbility.CurrentSpeed;
     }
 
     public override void OnHit(int damage)

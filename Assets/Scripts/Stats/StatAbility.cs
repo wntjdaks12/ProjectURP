@@ -41,7 +41,6 @@ public class StatAbility
 
         if (statInfo == null)
         {
-            UnityEngine.Debug.Log(statDataType);
         }
         else
         {

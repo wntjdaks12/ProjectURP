@@ -64,6 +64,11 @@ public class Character : Actor, IStat
         };
     }
 
+    public virtual void OnMove()
+    {
+        StatAbility.CurrentSpeed = StatAbility.MaxSpeed;
+    }
+        
     public override void OnHit(int damage)
     {
         base.OnHit(damage);
