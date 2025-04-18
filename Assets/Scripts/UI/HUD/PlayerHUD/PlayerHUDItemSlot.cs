@@ -18,8 +18,9 @@ public class PlayerHUDItemSlot : ItemSlot
             var skillSystem = heroObject.GetSkill(item.SkillId);
 
             var textInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<TextInfo>(nameof(TextInfo), itemId).Clone() as TextInfo;
+            textInfo.DescriptionKr = textInfo.DescriptionKr.GetStatReplace(heroStatAbility, skillSystem);
             textInfo.DescriptionEn = textInfo.DescriptionEn.GetStatReplace(heroStatAbility, skillSystem);
-
+            
             var tooltipBox = Instantiate(Resources.Load<TooltipBox>("Prefabs/UI/TooltipBox/TooltipBox"));
             tooltipBox.Init(textInfo, transform.position, UIManager.Instance.OverrayCanvas.transform);
         });
