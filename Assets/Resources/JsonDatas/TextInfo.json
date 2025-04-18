@@ -2,12 +2,12 @@
   {
     "id": 30001,
     "NameEn": "Lightning Heart",
-    "DescriptionEn": "Generates lightning energy around the character, continuously dealing damage to enemies within range.<br><br>Hits per second: ?skillPerSecond<br>Damage: <color=#DD81FF>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color>"
+    "DescriptionEn": "<color=#959595>Generates lightning energy around the character, continuously dealing damage to enemies within range.</color><br><br>Hits per second: <color=#FFFFFF>?skillPerSecond</color><br>Damage: <color=#DD81FF>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color>"
   },
   {
     "id": 30002,
     "NameEn": "Tome of Life",
-    "DescriptionEn": "Instantly restores own health.<br><br>Heal Amount: <color=#53FF69>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color>"
+    "DescriptionEn": "<color=#959595>Instantly restores own health.</color><br><br>Heal Amount: <color=#53FF69>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color><br>CooldownTime: <color=#FFFFFF>?skillCooldownTime</color>"
   }
 ]
   

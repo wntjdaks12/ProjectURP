@@ -2,20 +2,12 @@ using UnityEngine;
 
 public static class TextExtension
 {
-    public static string GetStatReplace(this string str, StatAbility[] statAbilitys)
+    public static string GetStatReplace(this string str, StatAbility statAbilitys, SkillSystem skillSystem)
     {
-        for (int i = 0; i < statAbilitys.Length; i++)
-        {
-            if (i == 0)
-            {
-                str = str.Replace("?skillAbilityPowerMultiplier", statAbilitys[i].AbilityPowerMultiplier.ToString());
-                str = str.Replace("?skillPerSecond", statAbilitys[i].PerSecond.ToString());
-            }
-            else if (i == 1)
-            {
-                str = str.Replace("?casterAbilityPower", statAbilitys[i].AbilityPower.ToString());
-            }
-        }
+        str = str.Replace("?skillAbilityPowerMultiplier", skillSystem.StatAbility.AbilityPowerMultiplier.ToString());
+        str = str.Replace("?skillPerSecond", skillSystem.StatAbility.PerSecond.ToString());
+        str = str.Replace("?skillCooldownTime", skillSystem.SkillInfo.CooldwonTime.ToString());
+        str = str.Replace("?casterAbilityPower", statAbilitys.AbilityPower.ToString());
 
         return str;
     }
