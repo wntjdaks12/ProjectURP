@@ -1,4 +1,4 @@
-using System;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,14 +10,21 @@ public class StatSlot : View
     [SerializeField] private Button pluseBtn;
 
     private PlayerViewModel viewModel;
+    private GameViewModel gameViewModel;
 
     private Stat.StatTypes statType;
+
+    private TextInfo textInfo;
 
     public void Init(PlayerViewModel viewModel, Stat.StatTypes statType)
     {
         this.statType = statType;
 
         this.viewModel = viewModel;
+        gameViewModel = GameManager.Instance.GameViewModel;
+        gameViewModel.PropertyChanged += OnViewModelPropertyChanged;
+
+        textInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<TextInfo>(nameof(TextInfo), 100001 + (int)statType);
 
         pluseBtn.onClick.RemoveAllListeners();
         pluseBtn.onClick.AddListener(() =>
@@ -32,7 +39,15 @@ public class StatSlot : View
 
     public override void UpdateUI()
     {
-        nameText.text = Enum.GetName(typeof(Stat.StatTypes), statType);
+        switch (GameManager.Instance.GameViewModel.LanguageType)
+        {
+            case GameViewModel.LanguageTypes.Kr:
+                nameText.text = textInfo.NameKr;
+                break;
+            case GameViewModel.LanguageTypes.En:
+                nameText.text = textInfo.NameEn;
+                break;
+        }
 
         switch (statType)
         {
@@ -42,5 +57,15 @@ public class StatSlot : View
             case Stat.StatTypes.MaxSpeed: valueText.text = viewModel.HeroObject.Hero.StatAbility.MaxSpeed.ToString(); break;
         }
 
+    }
+
+
+    public void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        Debug.Log(e.PropertyName);
+        if (e.PropertyName == "SetLanguage")
+        {
+            UpdateUI();
+        }
     }
 }

@@ -12,6 +12,66 @@
     "NameEn": "Tome of Life",
     "DescriptionKr": "<color=#959595>즉시 자신의 체력을 회복한다.</color><br><br>치유량: <color=#53FF69>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color><br>쿨타임: <color=#FFFFFF>?skillCooldownTime</color>",
     "DescriptionEn": "<color=#959595>Instantly restores own health.</color><br><br>Heal Amount: <color=#53FF69>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color><br>CooldownTime: <color=#FFFFFF>?skillCooldownTime</color>"
+  },
+  {
+    "id": 100001,
+    "NameKr": "최대 체력",
+    "NameEn": "MaxHp"
+  },
+  {
+    "id": 100002,
+    "NameKr": "물리 공격력",
+    "NameEn": "AttackDamage"
+  },
+  {
+    "id": 100003,
+    "NameKr": "마법 공격력",
+    "NameEn": "AbilityPower"
+  },
+  {
+    "id": 100004,
+    "NameKr": "최대 이동 속도",
+    "NameEn": "MaxSpeed"
+  },
+  {
+    "id": 100005,
+    "NameKr": "시야 거리",
+    "NameEn": "VisableDistance"
+  },
+  {
+    "id": 100006,
+    "NameKr": "시야 각",
+    "NameEn": "VisableAngle"
+  },
+  {
+    "id": 100007,
+    "NameKr": "기본 공격 사거리",
+    "NameEn": "BasicAttackRange"
+  },
+  {
+    "id": 100008,
+    "NameKr": "스킬 사거리",
+    "NameEn": "SkillRange"
+  },
+  {
+    "id": 100009,
+    "NameKr": "스킬 쿨타임",
+    "NameEn": "SkillCooldownTime"
+  },
+  {
+    "id": 100010,
+    "NameKr": "물리 공격력 계수",
+    "NameEn": "AttackDamageMultiplier"
+  },
+  {
+    "id": 100011,
+    "NameKr": "마법 공격력 계수",
+    "NameEn": "AbilityPowerMultiplier"
+  },
+  {
+    "id": 100012,
+    "NameKr": "초당 횟 수",
+    "NameEn": "PerSecond"
   }
 ]
   

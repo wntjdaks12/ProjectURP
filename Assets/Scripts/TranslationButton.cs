@@ -5,14 +5,17 @@ public class TranslationButton : MonoBehaviour
 {
     [SerializeField] private Button slotBtn;
 
-    private void Awake()
+    private void Start()
     {
+        // 게임 매니저 로딩씬으로 빼고 awake로 변경해야 됨
+        var gameViewModel = GameManager.Instance.GameViewModel;
+
         slotBtn.onClick.AddListener(() =>
         {
-            switch (GameManager.Instance.LanguageType)
+            switch (gameViewModel.LanguageType)
             {
-                case GameManager.LanguageTypes.En: GameManager.Instance.SetLanguage(GameManager.LanguageTypes.Kr); break;
-                case GameManager.LanguageTypes.Kr: GameManager.Instance.SetLanguage(GameManager.LanguageTypes.En); break;
+                case GameViewModel.LanguageTypes.En: gameViewModel.SetLanguage(GameViewModel.LanguageTypes.Kr); break;
+                case GameViewModel.LanguageTypes.Kr: gameViewModel.SetLanguage(GameViewModel.LanguageTypes.En); break;
             }
         });
     }

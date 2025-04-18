@@ -69,13 +69,13 @@ public class TooltipBox : View
     {
         if (textInfo != null)
         {
-            switch (GameManager.Instance.LanguageType)
+            switch (GameManager.Instance.GameViewModel.LanguageType)
             {
-                case GameManager.LanguageTypes.Kr:
+                case GameViewModel.LanguageTypes.Kr:
                     nameText.text = textInfo.NameKr;
                     descriptionText.text = textInfo.DescriptionKr;
                     break;
-                case GameManager.LanguageTypes.En:
+                case GameViewModel.LanguageTypes.En:
                     nameText.text = textInfo.NameEn;
                     descriptionText.text = textInfo.DescriptionEn;
                     break;
