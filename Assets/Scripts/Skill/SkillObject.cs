@@ -13,7 +13,7 @@ public class SkillObject : EntityObject
 
         skill = entity as Skill;
 
-        GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(skill.VFXId, transform.position, Quaternion.identity, transform);
+        GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(skill.VFXId, Vector3.zero, Quaternion.identity, transform);
     }
 
     public int GetTargetLayer()
