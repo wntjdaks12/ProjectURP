@@ -37,13 +37,13 @@ public class Character : Actor, IStat
 
         OnHitEvent += (damage) =>
         {
-            var damagePopupObj = GameApplication.Instance.EntityController.Spawn<DamagePopup, DamagePopupObject>(90001, Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity, UIManager.Instance.DamageCannvas.transform);
+            var damagePopupObj = GameApplication.Instance.EntityController.Spawn<DamagePopup, DamagePopupObject>(90001, Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity, UIManager.Instance.DamagePopup);
             damagePopupObj.UpdteUI(damage);
         };
 
         OnHealEvent += (damage) =>
         {
-            var damagePopupObj = GameApplication.Instance.EntityController.Spawn<DamagePopup, DamagePopupObject>(90002, Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity, UIManager.Instance.DamageCannvas.transform);
+            var damagePopupObj = GameApplication.Instance.EntityController.Spawn<DamagePopup, DamagePopupObject>(90002, Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity, UIManager.Instance.DamagePopup);
             damagePopupObj.UpdteUI(damage);
         };
 
