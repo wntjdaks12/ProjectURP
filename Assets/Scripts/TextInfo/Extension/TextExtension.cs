@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public static class TextExtension
 {
     public static string GetStatReplace(this string str, StatAbility statAbilitys, SkillSystem skillSystem)
