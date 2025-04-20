@@ -34,13 +34,4 @@ public class EntityObject : PoolableObject
     {
         ReturnPoolableObject();
     }
-
-    public void ChangeLayersRecursively(Transform trans, string name)
-    {
-        trans.gameObject.layer = LayerMask.NameToLayer(name);
-        foreach (Transform child in trans)
-        {
-            ChangeLayersRecursively(child, name);
-        }
-    }
 }

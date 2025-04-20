@@ -10,7 +10,7 @@ public class HeroObject : CharacterObject
 
         Hero = entity as Hero;
 
-        ChangeLayersRecursively(transform, "Player");
+        gameObject.ChangeLayersRecursively("Player");
     }
 
     public virtual void SetExp(int exp)

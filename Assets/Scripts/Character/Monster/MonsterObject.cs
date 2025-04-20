@@ -10,6 +10,6 @@ public class MonsterObject : CharacterObject
 
         Monster = Entity as Monster;
 
-        ChangeLayersRecursively(transform, "Enemy");
+        gameObject.ChangeLayersRecursively("Enemy");
     }
 }
