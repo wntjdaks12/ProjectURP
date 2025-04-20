@@ -6,6 +6,6 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get => instance ??= FindAnyObjectByType<UIManager>(); }
 
     [field: SerializeField] public OverrayCanvas OverrayCanvas { get; private set; }
-    [field: SerializeField] public Transform DamagePopup { get; private set; }
-    [field: SerializeField] public Transform MiniHUD { get; private set; }
+    [field: SerializeField] public Transform DamagePopupPanel { get; private set; }
+    [field: SerializeField] public Transform MiniHUDPanel { get; private set; }
 }
