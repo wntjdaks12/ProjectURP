@@ -30,7 +30,9 @@ public class LevelSpawnController : MonoBehaviour
             var randPoint = Random.insideUnitSphere * spawnRadius; randPoint.y = 0;
             var spawnPoint = transform.position + randPoint;
 
-            GameApplication.Instance.EntityController.Spawn<Monster, MonsterObject>(spawnEntityId, spawnPoint, Quaternion.identity);
+            var monsterObj = GameApplication.Instance.EntityController.Spawn<Monster, MonsterObject>(spawnEntityId, spawnPoint, Quaternion.identity);
+            var miniHUDObj = GameApplication.Instance.EntityController.Spawn<MiniHUD, MiniHUDObject>(110001, Camera.main.WorldToScreenPoint(monsterObj.MiniHUDNode.position), Quaternion.identity, UIManager.Instance.MiniHUD);
+            miniHUDObj.Init(monsterObj, monsterObj.Monster.StatAbility);
         }
     }
 }

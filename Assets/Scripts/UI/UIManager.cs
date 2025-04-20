@@ -7,4 +7,5 @@ public class UIManager : MonoBehaviour
 
     [field: SerializeField] public OverrayCanvas OverrayCanvas { get; private set; }
     [field: SerializeField] public Transform DamagePopup { get; private set; }
+    [field: SerializeField] public Transform MiniHUD { get; private set; }
 }

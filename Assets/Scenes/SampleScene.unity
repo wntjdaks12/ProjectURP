@@ -1331,6 +1331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <OverrayCanvas>k__BackingField: {fileID: 664556050}
   <DamagePopup>k__BackingField: {fileID: 244557160}
+  <MiniHUD>k__BackingField: {fileID: 1640372844}
 --- !u!4 &1595223457
 Transform:
   m_ObjectHideFlags: 0

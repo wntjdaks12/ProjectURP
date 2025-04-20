@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 // 스탯 능력치
-public class StatAbility
+public class StatAbility : ViewModel
 {
     public class StatInfo
     {
@@ -81,14 +81,24 @@ public class StatAbility
     public float CurrentSpeed
     {
         get { return currentSpeed; }
-        set { currentSpeed = value; }
+        set
+        {
+            currentSpeed = value;
+
+            OnPropertyChanged();
+        }
     }
     // 현재 체력
     private int currentHp;
     public int CurrentHp
     {
         get { return currentHp; }
-        set { currentHp = value; }
+        set 
+        {
+            currentHp = value;
+
+            OnPropertyChanged();
+        }
     }
     // 현재 기본 공격 사거리
     private float currentBasicAttackRange;

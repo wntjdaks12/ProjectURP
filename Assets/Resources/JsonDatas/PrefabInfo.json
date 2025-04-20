@@ -34,6 +34,10 @@
   {
     "id": 90002,
     "path": "Prefabs/DamagePopup/BasicDamagePopup_Heal"
+  },
+  {
+    "id": 110001,
+    "path": "Prefabs/UI/HUD/MiniHUD/EnemyMIHUD"
   }
 ]
   

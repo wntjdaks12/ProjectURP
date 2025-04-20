@@ -3,6 +3,7 @@ using UnityEngine;
 public class ActorObject : EntityObject
 {
     [field: SerializeField] public Transform HitNode { get; private set; }
+    [field: SerializeField] public Transform MiniHUDNode { get; private set; }
 
     public override void Init(Entity entity)
     {
