@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
     {
         var palyerManager = PlayerManager.Instance;
         palyerManager.PlayerViewModel.HeroObject = GameApplication.Instance.EntityController.Spawn<Hero, HeroObject>(palyerManager.PlayerViewModel.HeroId, Vector3.zero, Quaternion.identity);
+        
+        var heroObj = palyerManager.PlayerViewModel.HeroObject;
+
+        var miniHUDObj = GameApplication.Instance.EntityController.Spawn<MiniHUD, MiniHUDObject>(110002, Camera.main.WorldToScreenPoint(heroObj.MiniHUDNode.position), Quaternion.identity, UIManager.Instance.MiniHUDPanel);
+        miniHUDObj.Init(heroObj, heroObj.Hero.StatAbility);
 
         GameViewModel.SetLanguage(GameViewModel.LanguageTypes.Kr);
     }

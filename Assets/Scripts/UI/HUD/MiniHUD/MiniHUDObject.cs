@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class MiniHUDObject : UIObject
 {
     [SerializeField] private Image currentHpImg;
+    [SerializeField] private Image currentMpImg;
 
     public CharacterObject Target { get; set; }
     public StatAbility StatAbility { get; set; }
@@ -40,6 +41,7 @@ public class MiniHUDObject : UIObject
 
     public void UpdateUI()
     {
-        currentHpImg.fillAmount = (float)StatAbility.CurrentHp / StatAbility.MaxHp;
+        if (currentHpImg != null) currentHpImg.fillAmount = (float)StatAbility.CurrentHp / StatAbility.MaxHp;
+        if (currentMpImg != null) currentMpImg.fillAmount = (float)StatAbility.CurrentMp / StatAbility.MaxMp;
     }
 }

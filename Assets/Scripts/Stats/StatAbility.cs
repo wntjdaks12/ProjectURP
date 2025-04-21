@@ -186,8 +186,8 @@ public class StatAbility : ViewModel
         get { return StatInfos.Sum(x => x.statData.GetTotalStatValue(Stat.StatTypes.PerSecond)); }
     } 
     // 최대 마나
-    public float MaxMp
+    public int MaxMp
     {
-        get { return StatInfos.Sum(x => x.statData.GetTotalStatValue(Stat.StatTypes.MaxHp)); }
+        get { return (int)StatInfos.Sum(x => x.statData.GetTotalStatValue(Stat.StatTypes.MaxMp)); }
     }
 }
