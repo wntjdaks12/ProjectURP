@@ -1,6 +1,5 @@
-using UnityEngine;
 using System.Linq;
-using UnityEngine.AI;
+using UnityEngine;
 
 public class HeroController : MonoBehaviour
 {
@@ -18,11 +17,26 @@ public class HeroController : MonoBehaviour
         {
             heroObject.OnMove(targetMonster.Transform.position);
 
-            OnRecoverMp();
+            CheckMp();
         }
     }
 
     #region 마나 관련 제어
+
+    public void CheckMp()
+    {
+        if (heroObject.CheckFillMp()) // Mp가 가득 차 있을 경우
+        {
+            heroObject.OnConsumeMp(); // 마나 소모
+
+            TimeLineManager.Instance.UltSkillEffectTimeLineDirector.Play();
+        }
+        else
+        {
+            OnRecoverMp(); // 마나 회복
+        }
+    }
+
     public void OnRecoverMp()
     {
         heroObject.OnRecoverMp(1);

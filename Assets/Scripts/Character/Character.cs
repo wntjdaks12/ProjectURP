@@ -121,4 +121,21 @@ public class Character : Actor, IStat
             StatAbility.CurrentMp = resCurMp;
         }
     }
+
+    public virtual void OnConsumeMp()
+    {
+        StatAbility.CurrentMp = 0;
+    }
+
+    public bool CheckFillMp()
+    {
+        if (StatAbility.CurrentMp >= StatAbility.MaxMp)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

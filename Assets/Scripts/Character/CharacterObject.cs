@@ -56,6 +56,16 @@ public class CharacterObject : ActorObject
         Character.OnRecoverMp(mpAmount);
     }
 
+    public virtual void OnConsumeMp()
+    {
+        Character.OnConsumeMp();
+    }
+
+    public bool CheckFillMp()
+    {
+        return Character.CheckFillMp();
+    }
+
     public void SetSkill(int skillId)
     {
         SkillSystems.Add(new SkillSystem(skillId, this));
