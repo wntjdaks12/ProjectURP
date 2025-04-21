@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5643dbd6ee27eeb4c92458b955acf417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  director: {fileID: 0}
+  director: {fileID: 139138438}
 --- !u!1 &161858221
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,7 +896,7 @@ GameObject:
   - component: {fileID: 598036876}
   - component: {fileID: 598036875}
   m_Layer: 0
-  m_Name: TimeLine
+  m_Name: TimeLineManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
