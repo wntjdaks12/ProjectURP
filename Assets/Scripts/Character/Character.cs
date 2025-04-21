@@ -32,6 +32,7 @@ public class Character : Actor, IStat
 
         StatAbility.CurrentSpeed = StatAbility.MaxSpeed;
         StatAbility.CurrentHp = StatAbility.MaxHp;
+        StatAbility.CurrentMp = 0;
         StatAbility.CurrentBasicAttackRange = StatAbility.BasicAttackRange;
         // -------------------------------------------------------------------------------------------------------
 
@@ -105,5 +106,19 @@ public class Character : Actor, IStat
         }
 
         OnHealEvent?.Invoke(healAmount);
+    }
+
+    public virtual void OnRecoverMp(int mpAmount)
+    {
+        var resCurMp = StatAbility.CurrentMp + mpAmount;
+
+        if (resCurMp >= StatAbility.MaxMp)
+        {
+            StatAbility.CurrentMp = StatAbility.MaxMp;
+        }
+        else
+        {
+            StatAbility.CurrentMp = resCurMp;
+        }
     }
 }

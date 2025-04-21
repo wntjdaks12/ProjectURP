@@ -17,6 +17,15 @@ public class HeroController : MonoBehaviour
         if (targetMonster != null)
         {
             heroObject.OnMove(targetMonster.Transform.position);
+
+            OnRecoverMp();
         }
     }
+
+    #region 마나 관련 제어
+    public void OnRecoverMp()
+    {
+        heroObject.OnRecoverMp(1);
+    }
+    #endregion
 }

@@ -51,6 +51,11 @@ public class CharacterObject : ActorObject
         Character.OnHeal(healAmount);
     }
 
+    public virtual void OnRecoverMp(int mpAmount)
+    {
+        Character.OnRecoverMp(mpAmount);
+    }
+
     public void SetSkill(int skillId)
     {
         SkillSystems.Add(new SkillSystem(skillId, this));

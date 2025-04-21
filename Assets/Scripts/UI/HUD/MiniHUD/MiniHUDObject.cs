@@ -35,13 +35,29 @@ public class MiniHUDObject : UIObject
     {
         if (e.PropertyName == "CurrentHp")
         {
-            UpdateUI();
+            UpdateHPUI();
+        }
+        else if (e.PropertyName == "CurrentMp")
+        {
+            UpdateMPUI();
         }
     }
 
+    #region UI ฐüทร
     public void UpdateUI()
     {
-        if (currentHpImg != null) currentHpImg.fillAmount = (float)StatAbility.CurrentHp / StatAbility.MaxHp;
-        if (currentMpImg != null) currentMpImg.fillAmount = (float)StatAbility.CurrentMp / StatAbility.MaxMp;
+        if (currentHpImg != null) UpdateHPUI();
+        if (currentMpImg != null) UpdateMPUI();
     }
+
+    private void UpdateHPUI()
+    {
+        currentHpImg.fillAmount = (float)StatAbility.CurrentHp / StatAbility.MaxHp;
+    }
+
+    private void UpdateMPUI()
+    {
+        currentMpImg.fillAmount = (float)StatAbility.CurrentMp / StatAbility.MaxMp;
+    }
+    #endregion
 }
