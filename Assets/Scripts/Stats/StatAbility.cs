@@ -99,6 +99,18 @@ public class StatAbility : ViewModel
 
             OnPropertyChanged();
         }
+    } 
+    // 현재 마나
+    private int currentMp;
+    public int CurrentMp
+    {
+        get { return currentMp; }
+        set
+        {
+            currentMp = value;
+
+            OnPropertyChanged();
+        }
     }
     // 현재 기본 공격 사거리
     private float currentBasicAttackRange;
@@ -172,5 +184,10 @@ public class StatAbility : ViewModel
     public float PerSecond
     {
         get { return StatInfos.Sum(x => x.statData.GetTotalStatValue(Stat.StatTypes.PerSecond)); }
+    } 
+    // 최대 마나
+    public float MaxMp
+    {
+        get { return StatInfos.Sum(x => x.statData.GetTotalStatValue(Stat.StatTypes.MaxHp)); }
     }
 }

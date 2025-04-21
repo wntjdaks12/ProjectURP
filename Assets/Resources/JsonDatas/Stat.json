@@ -29,6 +29,10 @@
       {
         "statType": 6,
         "value": 3
+      },
+      {
+        "statType": 12,
+        "value": 10
       }
     ]
   },
