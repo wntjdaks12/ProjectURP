@@ -20,6 +20,10 @@
     "path": "Prefabs/VFXs/TomeofLifeVFX"
   },
   {
+    "id": 40004,
+    "path": "Prefabs/VFXs/Thunderburst/Thunderburst"
+  },
+  {
     "id": 60001,
     "path": "Prefabs/SkillObjects/LightningHeartSkillObject"
   },

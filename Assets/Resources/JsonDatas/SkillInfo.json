@@ -12,6 +12,13 @@
     "vfxId": 40003,
     "cooldwonTime": 2,
     "looping": 1
+  },
+  {
+    "id": 50003,
+    "skillType": 1,
+    "strategyType": 0,
+    "vfxId": 40004,
+    "looping": 0
   }
 ]
   
