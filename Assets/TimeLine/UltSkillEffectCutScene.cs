@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class UltSkillEffectCutScene : MonoBehaviour
 {
     private string oriLayerName;
 
-    public void Test1()
+    public void SignelStart()
     {
         var heroObj = PlayerManager.Instance.PlayerViewModel.HeroObject;
 
@@ -13,7 +13,7 @@ public class NewBehaviourScript : MonoBehaviour
         heroObj.gameObject.ChangeLayersRecursively("UIObject");
     }
 
-    public void Test2()
+    public void SignelEnd()
     {
         PlayerManager.Instance.PlayerViewModel.HeroObject.gameObject.ChangeLayersRecursively(oriLayerName);
     }
