@@ -92,9 +92,9 @@ public class CharacterObject : ActorObject
         return SkillSystems.Where(x => x.Id == skillId).FirstOrDefault();
     }
 
-    public void UseSkill(int skillId)
+    public void UseSkill(SkillInfo.SkillClassTypes skillClassType)
     {
-        var skillSystem = SkillSystems.Where(x => x.Id == skillId).FirstOrDefault();
+        var skillSystem = SkillSystems.Where(x => x.SkillInfo.SkillClassType == skillClassType).FirstOrDefault();
 
         if (skillSystem != null) skillSystem.Use();
     }
