@@ -31,7 +31,7 @@ public class HeroController : MonoBehaviour
 
             TimeLineManager.Instance.UltSkillEffectTimeLineDirector.Play();
 
-            heroObject.UseSkill(50003);
+            heroObject.UseSkill(SkillInfo.SkillClassTypes.Ultimate);
         }
         else
         {
