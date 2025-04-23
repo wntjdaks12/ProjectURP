@@ -30,6 +30,6 @@ public class AttackSkillBehavior : ISkillBehavior
     {
         yield return new WaitForSeconds(hitData.Delay);
 
-        actorObject.OnHit(10, index);
+        actorObject.OnHit(SkillSystem.CalculateDamage(), index);
     }
 }
