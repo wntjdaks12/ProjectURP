@@ -17,6 +17,8 @@ public class AttackSkillBehavior : ISkillBehavior
     {
         var colliders = Physics.OverlapSphere(SkillSystem.Caster.transform.position, 7, SkillSystem.GetTargetLayer(TargetInfo.TargetType.Enemy)).Select(x => x.GetComponentInParent<ActorObject>()).ToList();
 
+        GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(SkillSystem.SkillInfo.VFXId, Vector3.zero, Quaternion.identity, caster.transform);
+
         foreach (var actorObj in colliders)
         {
             for (int i = 0; i < SkillSystem.SkillInfo.HitDatas.Count; i++)
