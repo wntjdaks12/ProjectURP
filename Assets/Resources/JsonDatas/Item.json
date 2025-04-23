@@ -1,11 +1,13 @@
 [
   {
     "id": 30001,
-    "skillId": 50001
+    "skillId": 50001,
+    "ultSkillId": 50003
   },
   {
     "id": 30002,
-    "skillId": 50002
+    "skillId": 50002,
+    "ultSkillId": 0
   }
 ]
   

@@ -20,7 +20,7 @@ public class SkillSystem
         Caster = caster;
 
         SkillInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<SkillInfo>(nameof(SkillInfo), id);
-
+        Debug.Log(SkillInfo);
         switch (SkillInfo.StrategyType)
         {
             case SkillInfo.StrategyTypes.Attack: SetSkillBehavior(new AttackSkillBehavior(this)); break; // 공격 스킬일 경우
@@ -36,17 +36,7 @@ public class SkillSystem
         StatAbility.AddStatData(StatAbility.StatInfo.StatDataType.Main, statData);
         // -------------------------------------------------------------------------------------------------------
 
-        if (SkillInfo.SkillType == SkillInfo.SkillTypes.Passive)
-        {
-            if (!SkillInfo.Looping)
-            {
-                Use(caster);
-            }
-            else
-            {
-                CoroutineHelper.StartCoroutine(UseAsync(caster));
-            }
-        }
+        if(SkillInfo.SkillClassType == SkillInfo.SkillClassTypes.Normal) Use();
     }
 
     // 스킬 전략 행위 세팅
@@ -56,19 +46,22 @@ public class SkillSystem
     }
 
     // 스킬 사용
-    public void Use(CharacterObject caster)
+    public void Use()
     {
-        skillBehavior.Use(caster);
+        CoroutineHelper.StartCoroutine(UseAsync());
     }
 
-    public IEnumerator UseAsync(CharacterObject caster)
+    // 스킬 사용
+    private IEnumerator UseAsync()
     {
-        while (true)
+        yield return new WaitForSeconds(SkillInfo.CastingTime);
+
+        do
         {
-            skillBehavior.Use(caster);
+            skillBehavior.Use(Caster);
 
             yield return new WaitForSeconds(SkillInfo.CooldwonTime);
-        }
+        } while (SkillInfo.Looping);
     }
 
     // 데미지 계산
@@ -79,5 +72,18 @@ public class SkillSystem
         var resAbilityPower = (int)(Caster.Character.StatAbility.AbilityPower * StatAbility.AbilityPowerMultiplier);
 
         return resAttackDamage + resAbilityPower;
+    }
+
+    public int GetTargetLayer(TargetInfo.TargetType targetType)
+    {
+        switch (targetType)
+        {
+            case TargetInfo.TargetType.Self: return 0; // 수정 작업 필요
+            case TargetInfo.TargetType.Ally: return 1 << LayerMask.NameToLayer("Player");
+            case TargetInfo.TargetType.Enemy: return 1 << LayerMask.NameToLayer("Enemy");
+            case TargetInfo.TargetType.Both: return 0; // 수정 작업 필요
+        }
+
+        return 0;
     }
 }

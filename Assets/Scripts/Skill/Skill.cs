@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Skill : Entity
 {
     public int VFXId { get; set; }

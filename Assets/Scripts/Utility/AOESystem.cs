@@ -29,7 +29,7 @@ public class AOESystem : MonoBehaviour
     {
         if (curTime == 0)
         {
-            var colliders = Physics.OverlapSphere(transform.position, 7, skillObject.GetTargetLayer()).Select(x => x.GetComponentInParent<ActorObject>()).ToList();
+            var colliders = skillObject.GetTargets();
 
             if (cacheColliders.Count <= 0)
             {

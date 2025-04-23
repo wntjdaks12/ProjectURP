@@ -3,12 +3,14 @@
     "id": 50001,
     "skillType": 0,
     "strategyType": 2,
+    "skillClassType": 0,
     "looping": 0
   },
   {
     "id": 50002,
     "skillType": 0,
     "strategyType": 1,
+    "skillClassType": 0,
     "vfxId": 40003,
     "cooldwonTime": 2,
     "looping": 1
@@ -17,8 +19,30 @@
     "id": 50003,
     "skillType": 1,
     "strategyType": 0,
+    "skillClassType": 1,
     "vfxId": 40004,
-    "looping": 0
+    "castingTime": 1,
+    "looping": 0,
+    "HitDatas": [
+      {
+        "delay": 0
+      },
+      {
+        "delay": 0.1
+      },
+      {
+        "delay": 0.2
+      },
+      {
+        "delay": 0.3
+      },
+      {
+        "delay": 0.4
+      },
+      {
+        "delay": 0.5
+      }
+    ]
   }
 ]
   

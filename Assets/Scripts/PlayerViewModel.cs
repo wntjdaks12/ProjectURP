@@ -62,6 +62,7 @@ public class PlayerViewModel : ViewModel
 
             var item = GameApplication.Instance.GameModel.PresetData.ReturnData<Item>(nameof(Item), itemId);
             heroObject.SetSkill(item.SkillId);
+            if(item.UltSkillId != 0) heroObject.SetSkill(item.UltSkillId);
 
             OnPropertyChanged();
         }

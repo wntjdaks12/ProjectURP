@@ -30,6 +30,8 @@ public class HeroController : MonoBehaviour
             heroObject.OnConsumeMp(); // 마나 소모
 
             TimeLineManager.Instance.UltSkillEffectTimeLineDirector.Play();
+
+            heroObject.UseSkill(50003);
         }
         else
         {

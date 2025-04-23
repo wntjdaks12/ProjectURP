@@ -44,11 +44,26 @@ public class CharacterObject : ActorObject
         Character.OnHit(damage);
     }
 
+    public override void OnHit(int damage, int hitCount)
+    {
+        base.OnHit(damage);
+
+        Character.OnHit(damage,  hitCount);
+    }
+
     public override void OnHeal(int healAmount)
     {
         base.OnHeal(healAmount);
 
         Character.OnHeal(healAmount);
+    }
+
+
+    public override void OnHeal(int healAmount, int healCount)
+    {
+        base.OnHeal(healAmount);
+
+        Character.OnHeal(healAmount, healCount);
     }
 
     public virtual void OnRecoverMp(int mpAmount)
@@ -66,6 +81,7 @@ public class CharacterObject : ActorObject
         return Character.CheckFillMp();
     }
 
+    #region 스킬 관련
     public void SetSkill(int skillId)
     {
         SkillSystems.Add(new SkillSystem(skillId, this));
@@ -75,4 +91,12 @@ public class CharacterObject : ActorObject
     {
         return SkillSystems.Where(x => x.Id == skillId).FirstOrDefault();
     }
+
+    public void UseSkill(int skillId)
+    {
+        var skillSystem = SkillSystems.Where(x => x.Id == skillId).FirstOrDefault();
+
+        if (skillSystem != null) skillSystem.Use();
+    }
+    #endregion
 }

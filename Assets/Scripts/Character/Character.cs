@@ -5,7 +5,9 @@ public class Character : Actor, IStat
 {
     public event Action OnDeathEvent;
     public event Action<int> OnHitEvent;
+    public event Action<int, int> OnHit2Event;
     public event Action<int> OnHealEvent;
+    public event Action<int, int> OnHeal2Event;
 
     // IStat ±¸Çö
     public StatAbility StatAbility { get; set; }
@@ -42,10 +44,28 @@ public class Character : Actor, IStat
             damagePopupObj.UpdteUI(damage);
         };
 
-        OnHealEvent += (damage) =>
+        OnHit2Event += (damage, count) =>
+        {
+            var pos = Camera.main.WorldToScreenPoint(transform.position);
+            pos.y += count * 30;
+
+            var damagePopupObj = GameApplication.Instance.EntityController.Spawn<DamagePopup, DamagePopupObject>(90001, pos, Quaternion.identity, UIManager.Instance.DamagePopupPanel);
+            damagePopupObj.UpdteUI(damage);
+        };
+
+        OnHealEvent += (healAmount) =>
         {
             var damagePopupObj = GameApplication.Instance.EntityController.Spawn<DamagePopup, DamagePopupObject>(90002, Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity, UIManager.Instance.DamagePopupPanel);
-            damagePopupObj.UpdteUI(damage);
+            damagePopupObj.UpdteUI(healAmount);
+        };
+
+        OnHeal2Event += (healAmount, count) =>
+        {
+            var pos = Camera.main.WorldToScreenPoint(transform.position);
+            pos.y += count * 30;
+
+            var damagePopupObj = GameApplication.Instance.EntityController.Spawn<DamagePopup, DamagePopupObject>(90002, pos, Quaternion.identity, UIManager.Instance.DamagePopupPanel);
+            damagePopupObj.UpdteUI(healAmount);
         };
 
         OnDeathEvent += OnRemoveData;
@@ -74,8 +94,24 @@ public class Character : Actor, IStat
     {
         base.OnHit(damage);
 
+        CalculateHit(damage);
+
+        OnHitEvent?.Invoke(damage);
+    }
+
+    public override void OnHit(int damage, int hitCount)
+    {
+        base.OnHit(damage, hitCount);
+
+        CalculateHit(damage);
+
+        OnHit2Event?.Invoke(damage, hitCount);
+    }
+
+    private void CalculateHit(int damage)
+    {
         var resCurHp = StatAbility.CurrentHp - damage;
-     
+
         if (resCurHp > 0)
         {
             StatAbility.CurrentHp = resCurHp;
@@ -86,14 +122,28 @@ public class Character : Actor, IStat
 
             OnDeathEvent?.Invoke();
         }
-
-        OnHitEvent?.Invoke(damage);
     }
 
     public override void OnHeal(int healAmount)
     {
         base.OnHeal(healAmount);
 
+        CalculateHeal(healAmount);
+
+        OnHealEvent?.Invoke(healAmount);
+    }
+
+    public override void OnHeal(int healAmount, int healCount)
+    {
+        base.OnHeal(healAmount, healCount);
+
+        CalculateHeal(healAmount);
+
+        OnHeal2Event?.Invoke(healAmount, healCount);
+    }
+
+    private void CalculateHeal(int healAmount)
+    {
         var resCurHp = StatAbility.CurrentHp + healAmount;
 
         if (resCurHp >= StatAbility.MaxHp)
@@ -104,8 +154,6 @@ public class Character : Actor, IStat
         {
             StatAbility.CurrentHp = resCurHp;
         }
-
-        OnHealEvent?.Invoke(healAmount);
     }
 
     public virtual void OnRecoverMp(int mpAmount)
