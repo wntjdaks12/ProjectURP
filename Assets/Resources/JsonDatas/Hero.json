@@ -1,6 +1,12 @@
 [
   {
     "id": 10001,
+    "attriButeType": 0,
+    "maxExp": 10
+  },
+  {
+    "id": 10002,
+    "attriButeType": 1,
     "maxExp": 10
   }
 ]

@@ -1,5 +1,13 @@
 [
   {
+    "id": 10001,
+    "path": "Images/Icons/Character/Hero/TempHero1"
+  },
+  {
+    "id": 10002,
+    "path": "Images/Icons/Character/Hero/TempHero2"
+  },
+  {
     "id": 30001,
     "path": "Images/Icons/LightningHeart"
   },
@@ -10,6 +18,14 @@
   {
     "id": 80001,
     "path": "Images/Icons/Currency/Gold"
+  },
+  {
+    "id": 120001,
+    "path": "Images/Icons/Attribute/Lightning"
+  },
+  {
+    "id": 120002,
+    "path": "Images/Icons/Attribute/Natura"
   }
 ]
   

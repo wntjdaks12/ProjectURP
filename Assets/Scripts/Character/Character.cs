@@ -3,6 +3,14 @@ using UnityEngine;
 
 public class Character : Actor, IStat
 {
+    public enum AttributeTypes 
+    {
+        Lightning = 0,
+        Natura = 1
+    }
+
+    public AttributeTypes AttriButeType { get; set; }
+
     public event Action OnDeathEvent;
     public event Action<int> OnHitEvent;
     public event Action<int, int> OnHit2Event;

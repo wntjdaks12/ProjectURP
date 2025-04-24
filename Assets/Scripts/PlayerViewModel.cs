@@ -1,22 +1,8 @@
+using System.Collections.Generic;
 using System.Linq;
 
 public class PlayerViewModel : ViewModel
 {
-    private int heroId;
-    public int HeroId
-    {
-        get { return heroId; }
-        set
-        {
-            if (heroId != value)
-            {
-                heroId = value;
-
-                OnPropertyChanged();
-            }
-        }
-    }
-
     public int GetCount()
     {
         return itemIds.Length;
@@ -43,6 +29,34 @@ public class PlayerViewModel : ViewModel
 
         OnPropertyChanged();
     }
+
+    #region 영웅 관련
+    public class HeroData
+    {
+        public int id;
+        public IconInfo heroIconInfo;
+        public IconInfo attributeIconInfo;
+    }
+
+    private List<int> heroIds;
+    public List<HeroData> HeroDatas { get; private set; }
+
+    public void AddHero(int heroId)
+    {
+        var hero = GameApplication.Instance.GameModel.PresetData.ReturnData<Hero>(nameof(Hero), heroId);
+
+        heroIds.Add(heroId);
+
+        HeroDatas.Add(new HeroData
+        {
+            id = heroId,
+            heroIconInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<IconInfo>(nameof(IconInfo), heroId),
+            attributeIconInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<IconInfo>(nameof(IconInfo), 120001 + (int)hero.AttriButeType)
+        });;
+    }
+
+
+    #endregion
 
 
     #region 아이템 관련
@@ -90,6 +104,9 @@ public class PlayerViewModel : ViewModel
 
     public PlayerViewModel()
     {
+        heroIds = new List<int>();
+        HeroDatas = new List<HeroData>();
+
         itemIds = new int[3];
     }
 }

@@ -10,7 +10,7 @@ public class LevelSpawnController : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(asdAsync());
+        //StartCoroutine(asdAsync());
     }
 
     private IEnumerator asdAsync()

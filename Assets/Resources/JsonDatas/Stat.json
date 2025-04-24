@@ -37,6 +37,43 @@
     ]
   },
   {
+    "id": 10002,
+    "stats": [
+      {
+        "statType": 0,
+        "value": 100
+      },
+      {
+        "statType": 1,
+        "value": 1
+      },
+      {
+        "statType": 2,
+        "value": 1
+      },
+      {
+        "statType": 3,
+        "value": 1
+      },
+      {
+        "statType": 4,
+        "value": 10
+      },
+      {
+        "statType": 5,
+        "value": 360
+      },
+      {
+        "statType": 6,
+        "value": 3
+      },
+      {
+        "statType": 12,
+        "value": 500
+      }
+    ]
+  },
+  {
     "id": 20001,
     "stats": [
       {

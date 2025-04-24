@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         PlayerViewModel = new PlayerViewModel();
-        PlayerViewModel.HeroId = 10001; // 임시로 추가
+        PlayerViewModel.AddHero(10001); // 임시로 추가
+        PlayerViewModel.AddHero(10002); // 임시로 추가
     }
 }

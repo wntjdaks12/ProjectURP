@@ -4,6 +4,10 @@
     "path": "Prefabs/Characters/Heros/TempHero1"
   },
   {
+    "id": 10002,
+    "path": "Prefabs/Characters/Heros/TempHero2"
+  },
+  {
     "id": 20001,
     "path": "Prefabs/Characters/Monsters/TempMonster1"
   },
