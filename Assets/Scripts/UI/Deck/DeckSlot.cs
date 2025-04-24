@@ -32,6 +32,7 @@ public class DeckSlot : View
 
                 GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(40005, heroObj.transform.position, Quaternion.identity);
 
+                deckViewModel.AddCombatDeck(heroObj.Id);
                 heroId = heroObj.Id;
             }
             else
@@ -41,6 +42,7 @@ public class DeckSlot : View
                 var hero = GameApplication.Instance.GameModel.RunTimeData.ReturnData<Hero>(nameof(Hero), heroId);
                 hero.OnRemoveData();
 
+                deckViewModel.RemoveCombatDeck(heroId);
                 heroId = 0;
             }
 
