@@ -17,15 +17,30 @@ public class DeckSlot : View
     private DeckViewModel deckViewModel;
 
     private bool isChecked;
+    private int heroId;
 
     private void Awake()
     {
         slotBtn.onClick.AddListener(() =>
         {
-            if(!isChecked)
+            if (!isChecked)
+            {
                 checkedCont.gameObject.SetActive(true);
+
+                var heroData = deckViewModel.PlayerViewModel.HeroDatas[index];
+                var heroObj = GameApplication.Instance.EntityController.Spawn<Hero, HeroObject>(heroData.id, Vector3.zero, Quaternion.identity);
+
+                heroId = heroObj.Id;
+            }
             else
+            {
                 checkedCont.gameObject.SetActive(false);
+
+                var hero = GameApplication.Instance.GameModel.RunTimeData.ReturnData<Hero>(nameof(Hero), heroId);
+                hero.OnRemoveData();
+
+                heroId = 0;
+            }
 
             isChecked = !isChecked;
         });
@@ -35,6 +50,9 @@ public class DeckSlot : View
     {
         this.index = index;
         this.deckViewModel = deckViewModel;
+
+        isChecked = false;
+        heroId = 0;
 
         UpdateUI();
     }

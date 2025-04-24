@@ -11,13 +11,16 @@ public class HeroController : MonoBehaviour
 
         var monsters = GameApplication.Instance.GameModel.RunTimeData.ReturnDatas<Monster>(nameof(Monster));
 
-        var targetMonster = monsters.OrderBy(x => Vector3.Distance(x.Transform.position, heroObject.transform.position)).FirstOrDefault();
-
-        if (targetMonster != null)
+        if (monsters != null)
         {
-            heroObject.OnMove(targetMonster.Transform.position);
+            var targetMonster = monsters.OrderBy(x => Vector3.Distance(x.Transform.position, heroObject.transform.position)).FirstOrDefault();
 
-            CheckMp();
+            if (targetMonster != null)
+            {
+                heroObject.OnMove(targetMonster.Transform.position);
+
+                CheckMp();
+            }
         }
     }
 

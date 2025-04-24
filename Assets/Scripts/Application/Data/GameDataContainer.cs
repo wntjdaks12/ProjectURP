@@ -168,8 +168,11 @@ public class GameDataContainer
         dataTables.TryGetValue(tableName, out IDataTable tableModel);
 
         if (tableModel == null)
-            Debug.LogError($"{tableName}에 해당하는 Table이없다");
+        {
+            Debug.Log($"{tableName}에 해당하는 Table이없다");
 
+            return default;
+        }
         return tableModel.GetDatas().Select(x => (T)x).ToArray();
     }
 
