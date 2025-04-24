@@ -10,11 +10,26 @@ public class DeckSlot : View
     [Header("버튼")]
     [SerializeField] private Button slotBtn;
 
-    [Header("체크")]
+    [Header("오브젝트")]
     [SerializeField] private GameObject checkedCont;
 
     private int index;
     private DeckViewModel deckViewModel;
+
+    private bool isChecked;
+
+    private void Awake()
+    {
+        slotBtn.onClick.AddListener(() =>
+        {
+            if(!isChecked)
+                checkedCont.gameObject.SetActive(true);
+            else
+                checkedCont.gameObject.SetActive(false);
+
+            isChecked = !isChecked;
+        });
+    }
 
     public void Init(int index, DeckViewModel deckViewModel)
     {
