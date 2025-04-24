@@ -28,7 +28,9 @@ public class DeckSlot : View
                 checkedCont.gameObject.SetActive(true);
 
                 var heroData = deckViewModel.PlayerViewModel.HeroDatas[index];
-                var heroObj = GameApplication.Instance.EntityController.Spawn<Hero, HeroObject>(heroData.id, Vector3.zero, Quaternion.identity);
+                var heroObj = GameApplication.Instance.EntityController.Spawn<Hero, HeroObject>(heroData.id, new Vector3(0, 6.937001f, 0), Quaternion.identity);
+
+                GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(40005, heroObj.transform.position, Quaternion.identity);
 
                 heroId = heroObj.Id;
             }

@@ -28,6 +28,10 @@
     "path": "Prefabs/VFXs/Thunderburst/Thunderburst"
   },
   {
+    "id": 40005,
+    "path": "Prefabs/VFXs/SummonVFX"
+  },
+  {
     "id": 60001,
     "path": "Prefabs/SkillObjects/LightningHeartSkillObject"
   },
