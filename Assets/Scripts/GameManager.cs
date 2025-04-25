@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance { get => instance ??= FindAnyObjectByType<GameManager>(); }
 
+    [SerializeField] private LevelSpawnController levelSpawnController;
+
     private void Awake()
     {
         GameViewModel = new GameViewModel();
@@ -23,5 +25,10 @@ public class GameManager : MonoBehaviour
         miniHUDObj.Init(heroObj, heroObj.Hero.StatAbility);*/
 
         GameViewModel.SetLanguage(GameViewModel.LanguageTypes.Kr);
+    }
+
+    public void GameStart()
+    {
+        levelSpawnController.create();
     }
 }

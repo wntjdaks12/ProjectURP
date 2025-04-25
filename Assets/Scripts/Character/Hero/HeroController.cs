@@ -19,7 +19,7 @@ public class HeroController : MonoBehaviour
             {
                 heroObject.OnMove(targetMonster.Transform.position);
 
-                CheckMp();
+                //CheckMp();
             }
         }
     }

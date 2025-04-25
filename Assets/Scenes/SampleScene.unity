@@ -786,6 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2830a03e115d3954ebae77c2c3658c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSpawnController: {fileID: 1816977344}
 --- !u!1 &369089538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3714,7 +3715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnEntityId: 20001
-  spawnRadius: 1
+  spawnRadius: 5
   spawnCount: 5
 --- !u!4 &1816977345
 Transform:
@@ -3724,7 +3725,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816977343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 9.55, y: 6.937001, z: 9.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

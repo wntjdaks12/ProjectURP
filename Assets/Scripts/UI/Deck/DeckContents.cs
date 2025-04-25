@@ -20,7 +20,7 @@ public class DeckContents : View
 
         combatBtn.onClick.AddListener(() =>
         {
-
+            GameManager.Instance.GameStart();
         });
 
         deckViewModel.PropertyChanged += OnViewModelPropertyChanged;
