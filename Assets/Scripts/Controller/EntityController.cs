@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EntityController : MonoBehaviour
 {
-    public Action<EntityObject> OnEntitySpawn; 
+    public event Action<EntityObject> OnEntitySpawn; 
 
     /// <summary>
     /// 엔티티를 생성합니다.
