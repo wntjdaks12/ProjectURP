@@ -7,10 +7,5 @@ public class Monster : Character
     public override void Init(Transform transform = null)
     {
         base.Init(transform);
-
-        OnDeathEvent += () =>
-        {
-            PlayerManager.Instance.PlayerViewModel.Exp(Exp);
-        };
     }
 }

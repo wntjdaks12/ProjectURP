@@ -82,14 +82,22 @@ public class CharacterObject : ActorObject
     }
 
     #region 스킬 관련
-    public void SetSkill(int skillId)
+    public void SetSkill()
     {
-        SkillSystems.Add(new SkillSystem(skillId, this));
+        SkillSystems.Add(new SkillSystem(Character.SkillId, this));
     }
 
     public SkillSystem GetSkill(int skillId)
     {
         return SkillSystems.Where(x => x.Id == skillId).FirstOrDefault();
+    }
+
+    public void InitSkill()
+    {
+        for (int i = 0; i < SkillSystems.Count; i++)
+        {
+            SkillSystems[i].Init();
+        }
     }
 
     public void UseSkill(SkillInfo.SkillClassTypes skillClassType)

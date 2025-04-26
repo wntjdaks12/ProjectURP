@@ -13,12 +13,6 @@ public class HeroObject : CharacterObject
         gameObject.ChangeLayersRecursively("Player");
     }
 
-    public virtual void SetExp(int exp)
-    {
-        Hero.SetExp(exp);
-    }
-
-
     // 현재 이동 속도
     private float currentSpeed;
     public float CurrentSpeed

@@ -20,7 +20,7 @@ public class SkillSystem
         Caster = caster;
 
         SkillInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<SkillInfo>(nameof(SkillInfo), id);
-        Debug.Log(SkillInfo);
+
         switch (SkillInfo.StrategyType)
         {
             case SkillInfo.StrategyTypes.Attack: SetSkillBehavior(new AttackSkillBehavior(this)); break; // 공격 스킬일 경우
@@ -35,8 +35,11 @@ public class SkillSystem
         var statData = GameApplication.Instance.GameModel.PresetData.ReturnData<StatData>(nameof(StatData), Id);
         StatAbility.AddStatData(StatAbility.StatInfo.StatDataType.Main, statData);
         // -------------------------------------------------------------------------------------------------------
+    }
 
-        if(SkillInfo.SkillClassType == SkillInfo.SkillClassTypes.Normal) Use();
+    public void Init()
+    {
+        if (SkillInfo.SkillClassType == SkillInfo.SkillClassTypes.Normal) Use();
     }
 
     // 스킬 전략 행위 세팅

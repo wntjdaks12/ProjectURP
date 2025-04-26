@@ -3,10 +3,11 @@ using System.Linq;
 
 public class PlayerViewModel : ViewModel
 {
+    /*
     public int GetCount()
     {
         return itemIds.Length;
-    }
+    }*/
 
     private HeroObject heroObject;
     public HeroObject HeroObject 
@@ -21,13 +22,6 @@ public class PlayerViewModel : ViewModel
                 OnPropertyChanged();
             }
         }
-    }
-
-    public void Exp(int exp)
-    {
-        heroObject.SetExp(exp);
-
-        OnPropertyChanged();
     }
 
     #region 영웅 관련
@@ -59,7 +53,7 @@ public class PlayerViewModel : ViewModel
     #endregion
 
 
-    #region 아이템 관련
+  /*  #region 아이템 관련
 
     private int[] itemIds;
     public void AddItem(int itemId)
@@ -101,12 +95,12 @@ public class PlayerViewModel : ViewModel
     }
 
     #endregion
-
+  */
     public PlayerViewModel()
     {
         heroIds = new List<int>();
         HeroDatas = new List<HeroData>();
 
-        itemIds = new int[3];
+       // itemIds = new int[3];
     }
 }

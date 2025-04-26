@@ -51,7 +51,7 @@ public class PlayerHUD : View
     }
         
     private void UpdateItemSlots()
-    {
+    {/*
         var count = ViewModel.GetCount();
 
         for (int i = 0; i < count; i++)
@@ -59,7 +59,7 @@ public class PlayerHUD : View
             var itemId = ViewModel.GetItem(i);
 
             if (itemId != 0) itemSlots[i].Init(ViewModel.GetItem(i));
-        }
+        }*/
     }
     #endregion
 }

@@ -14,7 +14,7 @@ public class ItemStoreSlot : View
     {
         slotBtn.onClick.AddListener(() =>
         {
-            PlayerManager.Instance.PlayerViewModel.AddItem(id);
+          //  PlayerManager.Instance.PlayerViewModel.AddItem(id);
         });
     }
 

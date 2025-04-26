@@ -10,6 +10,7 @@ public class Character : Actor, IStat
     }
 
     public AttributeTypes AttriButeType { get; set; }
+    public int SkillId { get; set; }
 
     public event Action OnDeathEvent;
     public event Action<int> OnHitEvent;

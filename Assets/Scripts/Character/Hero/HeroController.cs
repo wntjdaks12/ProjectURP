@@ -5,6 +5,13 @@ public class HeroController : MonoBehaviour
 {
     public HeroObject heroObject;
 
+    private bool istemp;
+
+    private void Start()
+    {
+        heroObject.SetSkill();
+    }
+
     private void Update()
     {
         if (heroObject == null) return;
@@ -13,6 +20,12 @@ public class HeroController : MonoBehaviour
 
         if (monsters != null)
         {
+            if (!istemp)
+            {
+                istemp = true;
+                heroObject.InitSkill();
+            }
+
             var targetMonster = monsters.OrderBy(x => Vector3.Distance(x.Transform.position, heroObject.transform.position)).FirstOrDefault();
 
             if (targetMonster != null)

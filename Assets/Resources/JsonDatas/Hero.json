@@ -2,7 +2,8 @@
   {
     "id": 10001,
     "attriButeType": 0,
-    "maxExp": 10
+    "maxExp": 10,
+    "skillId": 50001
   },
   {
     "id": 10002,
