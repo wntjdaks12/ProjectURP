@@ -94,6 +94,10 @@ public class Character : Actor, IStat
         };
     }
 
+    public virtual void OnIdle()
+    { 
+    }
+
     public virtual void OnMove()
     {
         StatAbility.CurrentSpeed = StatAbility.MaxSpeed;
@@ -129,7 +133,7 @@ public class Character : Actor, IStat
         {
             StatAbility.CurrentHp = 0;
 
-            OnDeathEvent?.Invoke();
+            OnDeath();
         }
     }
 
@@ -149,6 +153,11 @@ public class Character : Actor, IStat
         CalculateHeal(healAmount);
 
         OnHeal2Event?.Invoke(healAmount, healCount);
+    }
+
+    public virtual void OnDeath()
+    {
+        OnDeathEvent?.Invoke();
     }
 
     private void CalculateHeal(int healAmount)

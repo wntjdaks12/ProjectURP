@@ -11,11 +11,22 @@ public class CharacterObject : ActorObject
 
     private List<SkillSystem> SkillSystems;
 
+    private ICharacterState state;
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         SkillSystems = new List<SkillSystem>();
+
+        if (animationHandler != null)
+        {
+            animationHandler.OnHitEndEvent += () =>
+            {
+                // 아직 움직이는 코드 안짜서 아이들로만 고정
+                OnIdle();
+            };
+        }
     }
 
     public override void Init(Entity entity)
@@ -26,6 +37,22 @@ public class CharacterObject : ActorObject
 
         // 네비 메쉬 초기화
         navMeshAgent.speed = Character.StatAbility.CurrentSpeed;
+
+        // 상태 idle
+        SetState(CharacterIdleState.Instance);
+        OnIdle();
+    }
+
+    public void SetState(ICharacterState state)
+    {
+        this.state = state;
+    }
+
+    public virtual void OnIdle()
+    {
+        Character.OnIdle();
+
+        state.OnIdle(this);
     }
 
 
@@ -42,6 +69,8 @@ public class CharacterObject : ActorObject
         base.OnHit(damage);
 
         Character.OnHit(damage);
+
+        state.OnHit(this);
     }
 
     public override void OnHit(int damage, int hitCount)
@@ -64,6 +93,13 @@ public class CharacterObject : ActorObject
         base.OnHeal(healAmount);
 
         Character.OnHeal(healAmount, healCount);
+    }
+
+    public virtual void OnDeath()
+    {
+        Character.OnDeath();
+
+        state.OnDeath(this);
     }
 
     public virtual void OnRecoverMp(int mpAmount)

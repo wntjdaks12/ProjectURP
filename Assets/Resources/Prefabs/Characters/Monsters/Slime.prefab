@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <animator>k__BackingField: {fileID: 4080616456230718620}
-  <animationHandler>k__BackingField: {fileID: 0}
+  <animationHandler>k__BackingField: {fileID: 5758622436188833586}
   <Rigidbody>k__BackingField: {fileID: 0}
   <HitNode>k__BackingField: {fileID: 889509788413884094}
   <MiniHUDNode>k__BackingField: {fileID: 4467093541580889455}
@@ -311,3 +311,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5758622436188833586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991564641319292531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9fe87e848ed85547aebd398fbc20d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
