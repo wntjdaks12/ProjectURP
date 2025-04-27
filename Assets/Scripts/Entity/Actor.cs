@@ -1,9 +1,15 @@
+using UnityEngine;
+
 public class Actor : Entity
 {
     public virtual void OnHit(int damage)
     {
     }
     public virtual void OnHit(int damage, int hitCount)
+    {
+    }
+
+    public virtual void OnHit(int damage, int hitCount, Transform target)
     {
     }
 

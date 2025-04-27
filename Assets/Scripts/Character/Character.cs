@@ -15,6 +15,7 @@ public class Character : Actor, IStat
     public event Action OnDeathEvent;
     public event Action<int> OnHitEvent;
     public event Action<int, int> OnHit2Event;
+    public event Action<Transform> OnHit3Event;
     public event Action<int> OnHealEvent;
     public event Action<int, int> OnHeal2Event;
 
@@ -119,6 +120,16 @@ public class Character : Actor, IStat
         CalculateHit(damage);
 
         OnHit2Event?.Invoke(damage, hitCount);
+    }
+
+    public override void OnHit(int damage, int hitCount, Transform target)
+    {
+        base.OnHit(damage, hitCount);
+
+        CalculateHit(damage);
+
+        OnHit2Event?.Invoke(damage, hitCount);
+        OnHit3Event?.Invoke(target);
     }
 
     private void CalculateHit(int damage)

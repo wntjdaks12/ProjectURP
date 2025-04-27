@@ -77,9 +77,16 @@ public class CharacterObject : ActorObject
 
     public override void OnHit(int damage, int hitCount)
     {
-        base.OnHit(damage);
+        base.OnHit(damage, hitCount);
 
         Character.OnHit(damage,  hitCount);
+    }
+
+    public override void OnHit(int damage, int hitCount, Transform target)
+    {
+        base.OnHit(damage, hitCount, target);
+
+        Character.OnHit(damage, hitCount, target);
     }
 
     public override void OnHeal(int healAmount)

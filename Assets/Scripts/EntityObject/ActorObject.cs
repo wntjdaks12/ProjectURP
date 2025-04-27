@@ -18,6 +18,10 @@ public class ActorObject : EntityObject
     {
     }
 
+    public virtual void OnHit(int damage, int hitCount, Transform target)
+    {
+    }
+
     public virtual void OnHeal(int healAmount)
     {
     }
