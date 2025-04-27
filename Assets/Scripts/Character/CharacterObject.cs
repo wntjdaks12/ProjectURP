@@ -60,6 +60,8 @@ public class CharacterObject : ActorObject
     {
         Character.OnMove();
 
+        state.OnMove(this);
+
         navMeshAgent.destination = position;
         navMeshAgent.speed = Character.StatAbility.CurrentSpeed;
     }

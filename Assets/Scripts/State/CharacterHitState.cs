@@ -16,9 +16,14 @@ public class CharacterHitState : ICharacterState
     public void OnIdle(CharacterObject characterObject)
     {
         characterObject.SetState(CharacterIdleState.Instance);
+
+        if (characterObject.animator != null) characterObject.animator.SetBool("IsMove", false);
     }
 
     public void OnMove(CharacterObject characterObject)
     {
+        characterObject.SetState(CharacterMoveState.Instance);
+
+        if (characterObject.animator != null) characterObject.animator.SetBool("IsMove", true);
     }
 }

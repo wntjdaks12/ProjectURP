@@ -1,6 +1,6 @@
-public class CharacterIdleState : ICharacterState
+public class CharacterMoveState : ICharacterState
 {
-    public static CharacterIdleState Instance { get; private set; } = new CharacterIdleState();
+    public static CharacterMoveState Instance { get; private set; } = new CharacterMoveState();
 
     public void OnHit(CharacterObject characterObject)
     {
@@ -11,6 +11,9 @@ public class CharacterIdleState : ICharacterState
 
     public void OnIdle(CharacterObject characterObject)
     {
+        characterObject.SetState(CharacterIdleState.Instance);
+
+        if (characterObject.animator != null) characterObject.animator.SetBool("IsMove", false);
     }
 
     public void OnDeath(CharacterObject characterObject)
@@ -22,8 +25,5 @@ public class CharacterIdleState : ICharacterState
 
     public void OnMove(CharacterObject characterObject)
     {
-        characterObject.SetState(CharacterMoveState.Instance);
-
-        if (characterObject.animator != null) characterObject.animator.SetBool("IsMove", true);
     }
 }
