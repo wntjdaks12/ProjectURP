@@ -53,7 +53,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.050980393, g: 0.34509805, b: 0, a: 1}
     - _Emission_Color: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 0.90588236, g: 0.79607844, b: 0.37254903, a: 1}
+    - _RimColor: {r: 1, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &70022751256581317
 MonoBehaviour:
