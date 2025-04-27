@@ -12,6 +12,8 @@ public class EntityObject : PoolableObject
 
     public GameObject localInstance { get; set; }
 
+    private Coroutine changeMatAsync;
+
     public virtual void Init(Entity entity)
     {
         Entity = entity;
@@ -25,13 +27,24 @@ public class EntityObject : PoolableObject
         if (Entity.Lifetime != 0 && gameObject.activeInHierarchy) StartCoroutine(Entity.StartLifeTime());
     }
 
-    public void ChangeMaterial(MaterialUtility.MaterialType type, float time)
+    public void ChangeMaterial(float time)
     {
-        StartCoroutine(materialUtility.ChangeMaterial(type, time));
+        if (gameObject.activeInHierarchy)
+            changeMatAsync = StartCoroutine(materialUtility.ChangeMaterial(time));
     }
 
     public void OnRemoveEntity()
     {
         ReturnPoolableObject();
+    }
+
+    private void OnDisable()
+    {
+        if (changeMatAsync != null)
+        {
+            StopCoroutine(changeMatAsync);
+
+            changeMatAsync = null;
+        }
     }
 }

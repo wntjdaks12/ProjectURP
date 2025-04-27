@@ -73,6 +73,8 @@ public class CharacterObject : ActorObject
         Character.OnHit(damage);
 
         state.OnHit(this);
+
+        ChangeMaterial( 0.05f);
     }
 
     public override void OnHit(int damage, int hitCount)
@@ -80,6 +82,8 @@ public class CharacterObject : ActorObject
         base.OnHit(damage, hitCount);
 
         Character.OnHit(damage,  hitCount);
+
+        ChangeMaterial(0.05f);
     }
 
     public override void OnHit(int damage, int hitCount, Transform target)
@@ -87,6 +91,8 @@ public class CharacterObject : ActorObject
         base.OnHit(damage, hitCount, target);
 
         Character.OnHit(damage, hitCount, target);
+
+        ChangeMaterial(0.05f);
     }
 
     public override void OnHeal(int healAmount)

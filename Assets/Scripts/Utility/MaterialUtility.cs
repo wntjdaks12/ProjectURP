@@ -7,8 +7,6 @@ using UnityEngine;
 // 로직 개편 필요
 public class MaterialUtility
 {
-    public enum MaterialType { Hit }
-
     private Dictionary<SkinnedMeshRenderer, Material[]> cachedSkinnedMeshRenderers;
 
     public MaterialUtility()
@@ -27,36 +25,37 @@ public class MaterialUtility
         {
             Init(child);
         }
+
     }
 
-    private Material getMaterial(MaterialType type)
+    public IEnumerator ChangeMaterial(float time)
     {
-        switch (type)
-        {
-            case MaterialType.Hit: return Resources.Load<Material>("New Material");
-        }
-
-        return null;
-    }
-
-    public IEnumerator ChangeMaterial(MaterialType type, float time)
-    {
-        foreach (var skinnedMeshRenderer in cachedSkinnedMeshRenderers)
-        {
-            var count = skinnedMeshRenderer.Key.materials.Length;
-            var m = new Material[count];
-            for (int i = 0; i < m.Length; i++)
-            {
-                m[i] = getMaterial(type);
-            }
-            skinnedMeshRenderer.Key.materials = m;
-        }
+        ChangeHit();
 
         yield return new WaitForSeconds(time);
 
+        ChangeHitOri();
+    }
+
+    private void ChangeHit()
+    {
         foreach (var skinnedMeshRenderer in cachedSkinnedMeshRenderers)
         {
-            skinnedMeshRenderer.Key.materials = skinnedMeshRenderer.Value;
+            foreach (var mat in skinnedMeshRenderer.Value)
+            {
+                mat.SetFloat("_Rim", 1);
+            }
+        }
+    }
+
+    private void ChangeHitOri()
+    {
+        foreach (var skinnedMeshRenderer in cachedSkinnedMeshRenderers)
+        {
+            foreach (var mat in skinnedMeshRenderer.Value)
+            {
+                mat.SetFloat("_Rim", 0);
+            }
         }
     }
 }
