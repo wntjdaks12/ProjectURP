@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class View : MonoBehaviour
 {
-    public event Action OnShowEvent;
-    public event Action OnHideEvent;
+    public UnityEvent OnShowEvent;
+    public UnityEvent OnHideEvent;
 
     public virtual void OnShow()
     {
