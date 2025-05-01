@@ -27,7 +27,7 @@ public class CharacterMenu : View
 
         if (exitBtn != null) exitBtn.onClick.AddListener(OnHide);
 
-        OnHide();
+        gameObject.SetActive(false);
     }
 
     #region UI 업데이트 관련
