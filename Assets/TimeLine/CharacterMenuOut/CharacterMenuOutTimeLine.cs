@@ -1,4 +1,4 @@
-public class CombatTimeLine : TimeLine
+public class CharacterMenuOutTimeLine : TimeLine
 {
     public void Play()
     {

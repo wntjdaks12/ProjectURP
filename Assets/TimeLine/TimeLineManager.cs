@@ -7,5 +7,6 @@ public class TimeLineManager : MonoBehaviour
 
     [field: SerializeField] public UltSkillEffectTimeLineDirector UltSkillEffectTimeLineDirector { get; private set; }
     [field: SerializeField] public CombatTimeLine CombatTimeLine { get; private set; }
-
+    [field: SerializeField] public CharacterMenuTimeLine CharacterMenuTimeLine { get; private set; }
+    [field: SerializeField] public CharacterMenuOutTimeLine CharacterMenuOutTimeLine { get; private set; }  
 }
