@@ -7,8 +7,6 @@ public class CharacterMenu : View
 
     private ClickSystem clickSystem;
 
-    private GameObject target;
-
     [SerializeField] private SkillInfoContents skillInfoContents;
 
     private CharacterMenuViewModel viewModel;
@@ -20,11 +18,14 @@ public class CharacterMenu : View
         {
             clickSystem.OnCliked.AddListener( (gameObj) =>
             {
-                target = gameObj;
-                // 테스트 하기위해 임시  코드
-                Init(gameObj.GetComponentInParent<HeroObject>().Entity.Id);
+                CharacterObject characterObject;
 
-                OnShow();
+                if (gameObj.transform.parent.TryGetComponent(out characterObject))
+                {
+                    Init(characterObject);
+
+                    OnShow();
+                }
             });
         }
 
@@ -32,9 +33,9 @@ public class CharacterMenu : View
 
         gameObject.SetActive(false);
     }
-    public void Init(int id)
-    {                // 테스트 하기위해 임시  코드
-        viewModel = new CharacterMenuViewModel(target.GetComponentInParent<HeroObject>());
+    public void Init(CharacterObject characterObject)
+    { 
+        viewModel = new CharacterMenuViewModel(characterObject);
 
         skillInfoContents?.Init(viewModel);
 
