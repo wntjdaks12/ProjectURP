@@ -9,16 +9,22 @@ public abstract class View : MonoBehaviour
 
     public virtual void OnShow()
     {
-        gameObject.SetActive(true);
+        if (!gameObject.activeSelf)
+        {
+            gameObject.SetActive(true);
 
-        OnShowEvent?.Invoke();
+            OnShowEvent?.Invoke();
+        }
     }
 
     public virtual void OnHide()
     {
-        gameObject.SetActive(false);
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
 
-        OnHideEvent?.Invoke();
+            OnHideEvent?.Invoke();
+        }
     }
 
     public abstract void UpdateUI();
