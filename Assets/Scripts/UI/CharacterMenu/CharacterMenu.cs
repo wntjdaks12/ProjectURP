@@ -9,6 +9,9 @@ public class CharacterMenu : View
 
     private GameObject target;
 
+    [SerializeField] private SkillInfoContents skillInfoContents;
+
+    private CharacterMenuViewModel viewModel;
     private void Awake()
     {
         clickSystem = FindObjectOfType<ClickSystem>();
@@ -18,8 +21,8 @@ public class CharacterMenu : View
             clickSystem.OnCliked.AddListener( (gameObj) =>
             {
                 target = gameObj;
-
-                UpdateUI();
+                // 테스트 하기위해 임시  코드
+                Init(gameObj.GetComponentInParent<HeroObject>().Entity.Id);
 
                 OnShow();
             });
@@ -28,6 +31,15 @@ public class CharacterMenu : View
         if (exitBtn != null) exitBtn.onClick.AddListener(OnHide);
 
         gameObject.SetActive(false);
+    }
+
+    public void Init(int id)
+    {
+        viewModel = new CharacterMenuViewModel(id);
+
+        skillInfoContents?.Init(viewModel);
+
+        UpdateUI();
     }
 
     #region UI 업데이트 관련

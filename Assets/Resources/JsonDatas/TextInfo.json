@@ -6,8 +6,8 @@
   },
   {
     "id": 50001,
-    "NameKr": "번개의 심장",
-    "NameEn": "Lightning Heart",
+    "NameKr": "천조",
+    "NameEn": "Thundercry",
     "DescriptionKr": "<color=#959595>캐릭터 주위에 번개 에너지를 생성하여, 범위 내 적들에게 지속적으로 피해를 입힌다.</color><br><br>초당 횟 수: <color=#FFFFFF>?skillPerSecond</color><br>데미지: <color=#DD81FF>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color>",
     "DescriptionEn": "<color=#959595>Generates lightning energy around the character, continuously dealing damage to enemies within range.</color><br><br>Hits per second: <color=#FFFFFF>?skillPerSecond</color><br>Damage: <color=#DD81FF>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color>"
   },
