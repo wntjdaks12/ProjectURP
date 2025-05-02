@@ -26,7 +26,7 @@ public class SkillInfoContents : View
         if (heroData != null)
         {
             if (skillNameText != null) skillNameText.text = heroData.skillTextInfo.NameKr;
-            if (skillDescriptionText != null) skillDescriptionText.text = heroData.skillTextInfo.DescriptionKr;
+            if (skillDescriptionText != null) skillDescriptionText.text = heroData.skillTextInfo.DescriptionKr.GetStatReplace(viewModel.CharacterObject.Character.StatAbility, viewModel.CharacterObject.GetSkillFirstOrDefault());
             if (skillIconImage != null) skillIconImage.sprite = Resources.Load<Sprite>(heroData.skillIconInfo.Path);
         }
     }

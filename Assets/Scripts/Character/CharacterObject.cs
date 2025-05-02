@@ -143,6 +143,11 @@ public class CharacterObject : ActorObject
         return SkillSystems.Where(x => x.Id == skillId).FirstOrDefault();
     }
 
+    public SkillSystem GetSkillFirstOrDefault()
+    {
+        return SkillSystems[0];
+    }
+
     public void InitSkill()
     {
         for (int i = 0; i < SkillSystems.Count; i++)

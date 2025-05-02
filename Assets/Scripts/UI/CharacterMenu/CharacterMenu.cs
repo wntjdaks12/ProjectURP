@@ -32,10 +32,9 @@ public class CharacterMenu : View
 
         gameObject.SetActive(false);
     }
-
     public void Init(int id)
-    {
-        viewModel = new CharacterMenuViewModel(id);
+    {                // 테스트 하기위해 임시  코드
+        viewModel = new CharacterMenuViewModel(target.GetComponentInParent<HeroObject>());
 
         skillInfoContents?.Init(viewModel);
 

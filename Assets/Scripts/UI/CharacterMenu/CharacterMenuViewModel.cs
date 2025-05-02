@@ -3,16 +3,16 @@ public class CharacterMenuViewModel : ViewModel
 {
     private PlayerViewModel playerViewModel;
 
-    private int id;
-    public CharacterMenuViewModel(int id)
+    public CharacterObject CharacterObject { get; private set; }
+    public CharacterMenuViewModel(CharacterObject characterObject)
     {
         playerViewModel = PlayerManager.Instance.PlayerViewModel;
 
-        this.id = id;
+        CharacterObject = characterObject;
     }
 
     public PlayerViewModel.HeroData GetHeroData()
     {
-        return playerViewModel.HeroDatas.Where(x => x.id == id).FirstOrDefault();
+        return playerViewModel.HeroDatas.Where(x => x.id == CharacterObject.Entity.Id).FirstOrDefault();
     }
 }
