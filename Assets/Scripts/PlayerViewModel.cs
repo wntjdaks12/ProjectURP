@@ -3,12 +3,6 @@ using System.Linq;
 
 public class PlayerViewModel : ViewModel
 {
-    /*
-    public int GetCount()
-    {
-        return itemIds.Length;
-    }*/
-
     private HeroObject heroObject;
     public HeroObject HeroObject 
     {
@@ -30,6 +24,7 @@ public class PlayerViewModel : ViewModel
         public int id;
         public IconInfo heroIconInfo;
         public IconInfo attributeIconInfo;
+        public TextInfo skillTextInfo;
     }
 
     private List<int> heroIds;
@@ -45,62 +40,17 @@ public class PlayerViewModel : ViewModel
         {
             id = heroId,
             heroIconInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<IconInfo>(nameof(IconInfo), heroId),
-            attributeIconInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<IconInfo>(nameof(IconInfo), 120001 + (int)hero.AttriButeType)
+            attributeIconInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<IconInfo>(nameof(IconInfo), 120001 + (int)hero.AttriButeType),
+            skillTextInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<TextInfo>(nameof(TextInfo), hero.SkillId)
         });;
     }
 
 
     #endregion
 
-
-  /*  #region 아이템 관련
-
-    private int[] itemIds;
-    public void AddItem(int itemId)
-    {
-        if (itemIds.Any(x => x == 0))
-        {
-            for (int i = 0; i < itemIds.Length; i++)
-            {
-                if (itemIds[i] == 0)
-                {
-                    itemIds[i] = itemId; break;
-                }
-            }
-
-            var item = GameApplication.Instance.GameModel.PresetData.ReturnData<Item>(nameof(Item), itemId);
-            heroObject.SetSkill(item.SkillId);
-            if(item.UltSkillId != 0) heroObject.SetSkill(item.UltSkillId);
-
-            OnPropertyChanged();
-        }
-    }
-
-    public void RemoveItem(int itemId)
-    {
-        for (int i = 0; i < itemIds.Length; i++)
-        {
-            if (itemIds[i] == itemId)
-            {
-                itemIds[i] = 0; break;
-            }
-        }
-
-        OnPropertyChanged();
-    }
-
-    public int GetItem(int index)
-    {
-        return itemIds[index];
-    }
-
-    #endregion
-  */
     public PlayerViewModel()
     {
         heroIds = new List<int>();
         HeroDatas = new List<HeroData>();
-
-       // itemIds = new int[3];
     }
 }
