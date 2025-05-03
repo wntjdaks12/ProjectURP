@@ -5,15 +5,16 @@ public class StatContents : View
     [SerializeField] private StatSlot statSlot;
     [SerializeField] private Transform parent;
 
-    private PlayerViewModel viewModel;
+    private CharacterMenuViewModel viewModel;
 
-    public void Init(PlayerViewModel viewModel)
+    public void Init(CharacterMenuViewModel viewModel)
     {
         this.viewModel = viewModel;
 
         UpdateUI();
     }
 
+    #region UI 업데이트 관련
     public override void UpdateUI()
     {
         // 필요한 스탯만 보여주기 위해 하나씩 슬롯 생성
@@ -29,4 +30,5 @@ public class StatContents : View
         var slot4 = Instantiate(statSlot, parent);
         slot4.Init(viewModel, Stat.StatTypes.MaxSpeed);
     }
+    #endregion
 }
