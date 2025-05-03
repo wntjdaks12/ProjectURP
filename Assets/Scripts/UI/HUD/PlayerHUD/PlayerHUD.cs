@@ -30,7 +30,7 @@ public class PlayerHUD : View
         {
             UpdateUI();
 
-            statContents.Init(ViewModel);
+            //statContents.Init(ViewModel);
         }
         else if (e.PropertyName == "Exp")
         {

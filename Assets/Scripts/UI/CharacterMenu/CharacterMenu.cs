@@ -8,6 +8,7 @@ public class CharacterMenu : View
     private ClickSystem clickSystem;
 
     [SerializeField] private SkillInfoContents skillInfoContents;
+    [SerializeField] private StatContents statContents;
 
     private CharacterMenuViewModel viewModel;
     private void Awake()
@@ -38,6 +39,7 @@ public class CharacterMenu : View
         viewModel = new CharacterMenuViewModel(characterObject);
 
         skillInfoContents?.Init(viewModel);
+        statContents?.Init(viewModel);
 
         UpdateUI();
     }
