@@ -11,6 +11,7 @@ public class HeroObject : CharacterObject
         Hero = entity as Hero;
 
         gameObject.ChangeLayersRecursively("Player");
+        gameObject.ChangeTagsRecursively("Hero");
     }
 
     // 현재 이동 속도
