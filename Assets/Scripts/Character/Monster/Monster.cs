@@ -7,5 +7,20 @@ public class Monster : Character
     public override void Init(Transform transform = null)
     {
         base.Init(transform);
+
+        OnDeathEvent += () =>
+        {
+            var dropItemInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<DropItemInfo>(nameof(DropItemInfo), Id);
+
+            foreach (var data in dropItemInfo.DropItemDatas)
+            {
+                if (data.DropProbability >= UnityEngine.Random.Range(1, 101))
+                {
+                    var dropItemObj = GameApplication.Instance.EntityController.Spawn<DropItem, DropItemObject>(70001, Transform.position, Quaternion.identity);
+                    dropItemObj.DropItemData = data;
+                }
+
+            }
+        };
     }
 }

@@ -113,6 +113,10 @@ public class HeroController : MonoBehaviour, IGameObserver
 
         randomAsync = null;
 
+        // 미니 HUD 생성
+        var miniHUDObj = GameApplication.Instance.EntityController.Spawn<MiniHUD, MiniHUDObject>(110002, Camera.main.WorldToScreenPoint(heroObject.MiniHUDNode.position), Quaternion.identity, UIManager.Instance.MiniHUDPanel);
+        miniHUDObj.Init(heroObject, heroObject.Hero.StatAbility);
+
         isCombat = true;
     }
     #endregion

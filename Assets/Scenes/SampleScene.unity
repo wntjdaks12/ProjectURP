@@ -4324,7 +4324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnEntityId: 20001
   spawnRadius: 5
-  spawnCount: 5
+  spawnCount: 1
 --- !u!4 &1816977345
 Transform:
   m_ObjectHideFlags: 0
