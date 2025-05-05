@@ -9,7 +9,7 @@ public class HeroController : MonoBehaviour, IGameObserver
 
     private bool istemp;
 
-    private bool isCombat;
+    private bool isCombat; // 전투 상황인지 체크
 
     private Coroutine randomAsync;
 
@@ -30,9 +30,9 @@ public class HeroController : MonoBehaviour, IGameObserver
     {
         if (heroObject == null) return;
 
-        if (!isCombat && randomAsync == null)
+        if (!isCombat)
         {
-            IdleNotify();
+            if(randomAsync == null) IdleNotify();
         }
         else
         {
@@ -48,17 +48,9 @@ public class HeroController : MonoBehaviour, IGameObserver
 
                 var targetMonster = monsterObjs.OrderBy(x => Vector3.Distance(x.transform.position, heroObject.transform.position)).FirstOrDefault();
 
-                if (targetMonster != null)
+                if (monsterObjs.Length >= 1)
                 {
-                    if (targetMonster.gameObject.activeInHierarchy)
-                    {
-                        heroObject.OnIdle();
-                    }
-                    else
-                    {
-                        heroObject.OnMove(targetMonster.transform.position);
-                    }
-                    //CheckMp();
+                    heroObject.OnMove(targetMonster.transform.position);
                 }
             }
         }
