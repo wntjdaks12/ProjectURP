@@ -12,6 +12,7 @@
     "skillType": 0,
     "strategyType": 1,
     "skillClassType": 0,
+    "TargetType": 1,
     "vfxId": 40003,
     "cooldwonTime": 2,
     "looping": 1
