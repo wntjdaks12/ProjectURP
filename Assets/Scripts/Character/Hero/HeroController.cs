@@ -36,9 +36,9 @@ public class HeroController : MonoBehaviour, IGameObserver
         }
         else
         {
-            var monsters = GameApplication.Instance.GameModel.RunTimeData.ReturnDatas<Monster>(nameof(Monster));
+            var monsterObjs = GameApplication.Instance.GameModel.RunTimeData.ReturnDatas<MonsterObject>(nameof(MonsterObject));
 
-            if (monsters != null)
+            if (monsterObjs != null)
             {
                 if (!istemp)
                 {
@@ -46,12 +46,18 @@ public class HeroController : MonoBehaviour, IGameObserver
                     heroObject.InitSkill();
                 }
 
-                var targetMonster = monsters.OrderBy(x => Vector3.Distance(x.Transform.position, heroObject.transform.position)).FirstOrDefault();
+                var targetMonster = monsterObjs.OrderBy(x => Vector3.Distance(x.transform.position, heroObject.transform.position)).FirstOrDefault();
 
                 if (targetMonster != null)
                 {
-                    heroObject.OnMove(targetMonster.Transform.position);
-
+                    if (targetMonster.gameObject.activeInHierarchy)
+                    {
+                        heroObject.OnIdle();
+                    }
+                    else
+                    {
+                        heroObject.OnMove(targetMonster.transform.position);
+                    }
                     //CheckMp();
                 }
             }
