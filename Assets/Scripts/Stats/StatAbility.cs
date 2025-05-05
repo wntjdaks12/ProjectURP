@@ -189,5 +189,10 @@ public class StatAbility : ViewModel
     public int MaxMp
     {
         get { return (int)StatInfos.Sum(x => x.statData.GetTotalStatValue(Stat.StatTypes.MaxMp)); }
+    } 
+    // 바디 물리 공격력
+    public int BodyDamage
+    {
+        get { return (int)StatInfos.Sum(x => x.statData.GetTotalStatValue(Stat.StatTypes.BodyDamage)); }
     }
 }

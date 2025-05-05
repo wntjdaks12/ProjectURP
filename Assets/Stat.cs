@@ -17,7 +17,8 @@ public class Stat
         AttackDamageMultiplier = 9,
         AbilityPowerMultiplier = 10,
         PerSecond = 11,
-        MaxMp = 12
+        MaxMp = 12,
+        BodyDamage = 13
     }
 
     public Stat(StatTypes statType, float value)
