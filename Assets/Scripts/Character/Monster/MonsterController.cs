@@ -27,12 +27,14 @@ public class MonsterController : MonoBehaviour
 
         if (target != null)
         {
-            if (!target.gameObject.activeSelf)
+            if (!target.gameObject.activeInHierarchy)
             {
                 target = null;
             }
-
-            monsterObject.OnMove(target.position);
+            else
+            {
+                monsterObject.OnMove(target.position);
+            }
         }
         else
         {
