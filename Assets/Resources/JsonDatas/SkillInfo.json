@@ -4,6 +4,7 @@
     "skillType": 0,
     "strategyType": 2,
     "skillClassType": 0,
+    "TargetType": 2,
     "looping": 0
   },
   {
@@ -11,6 +12,7 @@
     "skillType": 0,
     "strategyType": 1,
     "skillClassType": 0,
+    "TargetType": 1,
     "vfxId": 40003,
     "cooldwonTime": 2,
     "looping": 1

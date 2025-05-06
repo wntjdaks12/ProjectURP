@@ -13,10 +13,10 @@
   },
   {
     "id": 50002,
-    "NameKr": "생명의 서",
-    "NameEn": "Tome of Life",
-    "DescriptionKr": "<color=#959595>즉시 자신의 체력을 회복한다.</color><br><br>치유량: <color=#53FF69>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color><br>쿨타임: <color=#FFFFFF>?skillCooldownTime</color>",
-    "DescriptionEn": "<color=#959595>Instantly restores own health.</color><br><br>Heal Amount: <color=#53FF69>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color><br>CooldownTime: <color=#FFFFFF>?skillCooldownTime</color>"
+    "NameKr": "리프레쉬",
+    "NameEn": "Refresh",
+    "DescriptionKr": "<color=#959595>자신과 모든 아군의 체력을 즉시 회복합니다.</color><br><br>치유량: <color=#53FF69>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color><br>쿨타임: <color=#FFFFFF>?skillCooldownTime</color>",
+    "DescriptionEn": "<color=#959595>Instantly restores HP to yourself and all allies.</color><br><br>Heal Amount: <color=#53FF69>?casterAbilityPower + (?skillAbilityPowerMultiplier AP)</color><br>CooldownTime: <color=#FFFFFF>?skillCooldownTime</color>"
   },
   {
     "id": 100001,
@@ -77,6 +77,31 @@
     "id": 100012,
     "NameKr": "초당 횟 수",
     "NameEn": "PerSecond"
+  },
+  {
+    "id": 130001,
+    "NameKr": "에델리 초원",
+    "NameEn": "Edelian grasslands"
+  },
+  {
+    "id": 130002,
+    "NameKr": "슬라임의 숲 1",
+    "NameEn": "Forest of Slime 1"
+  },
+  {
+    "id": 130003,
+    "NameKr": "슬라임의 숲 2",
+    "NameEn": "Forest of Slime 2"
+  },
+  {
+    "id": 130004,
+    "NameKr": "슬라임의 숲 3",
+    "NameEn": "Forest of Slime 3"
+  },
+  {
+    "id": 130005,
+    "NameKr": "슬라임의 숲 4",
+    "NameEn": "Forest of Slime 4"
   }
 ]
   

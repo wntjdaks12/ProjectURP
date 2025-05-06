@@ -27,6 +27,8 @@ public class SkillInfo : Data
 
     public SkillClassTypes SkillClassType { get; set; }
 
+    public TargetInfo.TargetType TargetType { get; set; }
+
     public int VFXId { get; set; }
 
     public float CastingTime { get; set; }

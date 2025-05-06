@@ -85,8 +85,32 @@ public class SkillSystem
             case TargetInfo.TargetType.Ally: return 1 << LayerMask.NameToLayer("Player");
             case TargetInfo.TargetType.Enemy: return 1 << LayerMask.NameToLayer("Enemy");
             case TargetInfo.TargetType.Both: return 0; // 수정 작업 필요
+            default: return 0;
+        }
+    }
+
+    // 대상 가져오기
+    public CharacterObject[] GetTargets()
+    {
+        var targets = new CharacterObject[0];
+
+        switch (SkillInfo.TargetType)
+        {
+            case TargetInfo.TargetType.Self: break; // 수정 작업 필요
+            case TargetInfo.TargetType.Ally:
+                if (Caster.gameObject.layer == LayerMask.NameToLayer("Player"))
+                {
+                    targets = GameApplication.Instance.GameModel.RunTimeData.ReturnDatas<HeroObject>(nameof(HeroObject));
+                }
+                else if (Caster.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                {
+                    targets = GameApplication.Instance.GameModel.RunTimeData.ReturnDatas<MonsterObject>(nameof(MonsterObject));
+                }
+                break;
+            case TargetInfo.TargetType.Enemy: break; // 수정 작업 필요
+            case TargetInfo.TargetType.Both: break; // 수정 작업 필요
         }
 
-        return 0;
+        return targets;
     }
 }

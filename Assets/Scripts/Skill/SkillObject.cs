@@ -24,6 +24,6 @@ public class SkillObject : EntityObject
 
     public List<ActorObject> GetTargets()
     {
-        return Physics.OverlapSphere(transform.position, 7, SkillSystem.GetTargetLayer(skill.TargetType)).Select(x => x.GetComponentInParent<ActorObject>()).ToList();
+        return Physics.OverlapSphere(transform.position, 7, SkillSystem.GetTargetLayer(SkillSystem.SkillInfo.TargetType)).Select(x => x.GetComponentInParent<ActorObject>()).ToList();
     }
 }
