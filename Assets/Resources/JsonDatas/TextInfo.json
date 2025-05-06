@@ -77,6 +77,31 @@
     "id": 100012,
     "NameKr": "초당 횟 수",
     "NameEn": "PerSecond"
+  },
+  {
+    "id": 130001,
+    "NameKr": "에델리 초원",
+    "NameEn": "Edelian grasslands"
+  },
+  {
+    "id": 130002,
+    "NameKr": "슬라임의 숲 1",
+    "NameEn": "Forest of Slime 1"
+  },
+  {
+    "id": 130003,
+    "NameKr": "슬라임의 숲 2",
+    "NameEn": "Forest of Slime 2"
+  },
+  {
+    "id": 130004,
+    "NameKr": "슬라임의 숲 3",
+    "NameEn": "Forest of Slime 3"
+  },
+  {
+    "id": 130005,
+    "NameKr": "슬라임의 숲 4",
+    "NameEn": "Forest of Slime 4"
   }
 ]
   

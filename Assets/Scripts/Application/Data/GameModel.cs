@@ -36,6 +36,7 @@ public class GameModel : MonoBehaviour
         PresetData.LoadData<DamagePopup>(nameof(DamagePopup), "JsonDatas/DamagePopup"); // 데미지 팝업
         PresetData.LoadData<TextInfo>(nameof(TextInfo), "JsonDatas/TextInfo"); // 텍스트 정보
         PresetData.LoadData<MiniHUD>(nameof(MiniHUD), "JsonDatas/MiniHUD"); // 미니 HUD
+        PresetData.LoadData<ChapterInfo>(nameof(ChapterInfo), "JsonDatas/ChapterInfo"); // 챕터 정보
         // ----------------------------------------------------------------------------------------------------------------
     }
 }
