@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         PlayerViewModel = new PlayerViewModel();
-        PlayerViewModel.AddHero(10001); // 임시로 추가
-        PlayerViewModel.AddHero(10002); // 임시로 추가
+        PlayerViewModel.AddHero(10001); // 임시로 추가 (나중에 플레이어 데이터로)
+        PlayerViewModel.AddHero(10002); // 임시로 추가 (나중에 플레이어 데이터로)
     }
 }
