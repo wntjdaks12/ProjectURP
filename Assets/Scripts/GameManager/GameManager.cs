@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +8,6 @@ public class GameManager : MonoBehaviour, IGameSubject
 
     private static GameManager instance;
     public static GameManager Instance { get => instance ??= FindAnyObjectByType<GameManager>(); }
-
-    [SerializeField] private LevelSpawnController levelSpawnController;
 
     private List<IGameObserver> observers;
 
@@ -35,13 +34,25 @@ public class GameManager : MonoBehaviour, IGameSubject
                 IdleNotify(); // 무방비 상황을 알림
 
                 isCombat = false;
+
+                if(ChapterManager.Instance.ChapterViewModel.ExistNextStage())
+                    StartCoroutine(CombatDelayAsync());
             }
         }
     }
 
-    public void GameStart()
+    private IEnumerator CombatDelayAsync()
     {
-        levelSpawnController.create();
+        ChapterManager.Instance.StartNextStage();
+
+        yield return new WaitForSeconds(3f);
+
+        StartCombat();
+    }
+
+    public void StartCombat()
+    {
+        ChapterManager.Instance.StartCurrentStage();
 
         TimeLineManager.Instance.CombatTimeLine.Play();
 

@@ -22,7 +22,6 @@ public class GameModel : MonoBehaviour
         PresetData.LoadData<PrefabInfo>(nameof(PrefabInfo), "JsonDatas/PrefabInfo"); // 프리팹 정보
         PresetData.LoadData<Hero>(nameof(Hero), "JsonDatas/Hero"); // 영웅
         PresetData.LoadData<Monster>(nameof(Monster), "JsonDatas/Monster"); // 몬스터
-        PresetData.LoadData<LevelSpawnInfo>(nameof(LevelSpawnInfo), "JsonDatas/LevelSpawnInfo"); // 레벨 스폰 정보
         PresetData.LoadData<StatData>(nameof(StatData), "JsonDatas/Stat"); // 스탯
         PresetData.LoadData<IconInfo>(nameof(IconInfo), "JsonDatas/IconInfo"); // 아이콘 정보
         PresetData.LoadData<Item>(nameof(Item), "JsonDatas/Item"); // 아이템

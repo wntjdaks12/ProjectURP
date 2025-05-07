@@ -1,4 +1,5 @@
 using System.Collections;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -12,35 +13,61 @@ public class ChapterPanel : View
 
     [SerializeField] private PlayableDirector playableDirector;
 
-    private ChapterPanelViewModel viewModel;
+    private ChapterViewModel chapterViewModel;
+
+    private Coroutine startTimeLineAsync;
 
     private void Start()
     {
-        viewModel = new ChapterPanelViewModel();
+        chapterViewModel = ChapterManager.Instance.ChapterViewModel;
 
         Init();
+
+        chapterViewModel.PropertyChanged += OnViewModelPropertyChanged;
     }
 
     public void Init()
     {
         UpdateUI();
 
-        StartCoroutine(StartTimeLineAsync());
+        StartTimeLine(0.5f);
     }
 
-    private IEnumerator StartTimeLineAsync()
+    #region 타임라인
+    public void StartTimeLine(float initDelay)
     {
-        yield return new WaitForSeconds(0.5f);
+        if (startTimeLineAsync != null)
+        {
+            StopCoroutine(startTimeLineAsync);
+        }
+
+        startTimeLineAsync = StartCoroutine(StartTimeLineAsync(initDelay));
+    }
+
+    private IEnumerator StartTimeLineAsync(float initDelay)
+    {
+        yield return new WaitForSeconds(initDelay);
 
         playableDirector?.Play();
     }
+    #endregion
 
     #region UI 관련 업데이트
+    public void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == "CurrentStageId")
+        {
+            UpdateUI();
+
+            StartTimeLine(0f);
+        }
+    }
+
     public override void UpdateUI()
     {
-        if (chapterNameText) chapterNameText.text = viewModel.GetCurrentChapterTextInfo()?.NameKr;
-        if (stageNameText) stageNameText.text = viewModel.GetCurrentStageInfo()?.NameKr;
-        if (chapterIconImage) chapterIconImage.sprite = Resources.Load<Sprite>(viewModel.ChapterIconInfo.Path);
+        if (chapterNameText) chapterNameText.text = chapterViewModel.ChapterTextInfo?.NameKr;
+        if (stageNameText) stageNameText.text = chapterViewModel.StageTextInfo?.NameKr;
+        if (chapterIconImage) chapterIconImage.sprite = Resources.Load<Sprite>(chapterViewModel.ChapterIconInfo.Path);
     }
     #endregion
 }
