@@ -3,9 +3,43 @@
     "id": 130001,
     "stageInfos": [
       {
+        "index": 0,
         "stageId": 130002,
-        "monsterIds": [
-          20001
+        "spawnInfos": [
+          {
+            "spawnId": 20001,
+            "count": 4
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "stageId": 130003,
+        "spawnInfos": [
+          {
+            "spawnId": 20001,
+            "count": 6
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "stageId": 130004,
+        "spawnInfos": [
+          {
+            "spawnId": 20001,
+            "count": 10
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "stageId": 130005,
+        "spawnInfos": [
+          {
+            "spawnId": 20001,
+            "count": 15
+          }
         ]
       }
     ]

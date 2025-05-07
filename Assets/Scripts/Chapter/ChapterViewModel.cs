@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ChapterViewModel : ViewModel
 {
+    private ChapterInfo chapterInfo;
+
     private int currentChapterId;
     public int CurrentChapterId 
     {
@@ -13,6 +14,9 @@ public class ChapterViewModel : ViewModel
             if (currentChapterId != value)
             {
                 currentChapterId = value;
+
+                ChapterTextInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<TextInfo>(nameof(TextInfo), CurrentChapterId);
+                ChapterIconInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<IconInfo>(nameof(IconInfo), CurrentChapterId);
 
                 OnPropertyChanged();
             }
@@ -29,14 +33,77 @@ public class ChapterViewModel : ViewModel
             {
                 currentStageId = value;
 
+                StageTextInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<TextInfo>(nameof(TextInfo), CurrentStageId);
+
                 OnPropertyChanged();
             }
         }
     }
 
+    public int CurrentStageIndex { get; private set; }
+
+    public TextInfo ChapterTextInfo { get; private set; }
+    public TextInfo StageTextInfo { get; private set; }
+    public IconInfo ChapterIconInfo { get; private set; }
+
     public ChapterViewModel()
     {
         CurrentChapterId = 130001; // 임시로 추가 (나중에 플레이어 데이터로)
         CurrentStageId = 130002; // 임시로 추가 (나중에 플레이어 데이터로)
+        CurrentStageIndex = 0;
+
+        chapterInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<ChapterInfo>(nameof(ChapterInfo), CurrentChapterId);
+    }
+
+    public bool ExistCurrentStage()
+    {
+        if (chapterInfo.StageInfos.Count > CurrentStageIndex)
+        {
+            Debug.Log("현재 스테이지는 존재 여부 (0)");
+            return true;
+        }
+        else
+        {
+            Debug.Log("현재 스테이지는 존재 여부 (X)");
+            return false;
+        }
+    }
+
+    public bool ExistNextStage()
+    {
+        if (chapterInfo.StageInfos.Count > CurrentStageIndex + 1)
+        {
+            Debug.Log("다음 스테이지는 존재 여부 (0)");
+            return true;
+        }
+        else
+        {
+            Debug.Log("다음 스테이지는 존재 여부 (X)");
+            return false;
+        }
+    }
+
+
+    public void NextStage()
+    {
+        if (ExistNextStage())
+        {
+            var index = CurrentStageIndex + 1;
+
+            var stageInfo = chapterInfo.StageInfos.Where(x => x.Index == index).FirstOrDefault();
+
+            if (stageInfo != null)
+            {
+                CurrentStageIndex = stageInfo.Index;
+                CurrentStageId = stageInfo.StageId;
+
+                Debug.Log($"{currentChapterId}챕터의 {currentStageId}스테이지 진입");
+            }
+        }
+    }
+
+    public StageInfo GetStageInfo()
+    {
+        return chapterInfo.StageInfos.Where(x => x.Index == CurrentStageIndex).FirstOrDefault();
     }
 }
