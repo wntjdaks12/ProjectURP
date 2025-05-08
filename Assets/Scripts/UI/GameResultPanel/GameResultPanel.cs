@@ -9,15 +9,21 @@ public class GameResultPanel : View
 
     public void Init()
     {
+        OnShow();
+
         UpdateUI();
     }
 
     public override void UpdateUI()
     {
+    }
+
+    public void UpdateSlot()
+    {
         StartCoroutine(UpdateSlotAsync());
     }
 
-    public IEnumerator UpdateSlotAsync()
+    private IEnumerator UpdateSlotAsync()
     {
         var slots = new List<GameResultItemSlot>();
 

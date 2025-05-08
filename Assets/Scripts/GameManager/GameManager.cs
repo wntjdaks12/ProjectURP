@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour, IGameSubject
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour, IGameSubject
     private List<IGameObserver> observers;
 
     private bool isCombat; // 전투 상황인지 체크
+
+    public UnityEvent OnChapterClearEvent;
 
     private void Awake()
     {
@@ -35,12 +38,17 @@ public class GameManager : MonoBehaviour, IGameSubject
 
                 isCombat = false;
 
-                if(ChapterManager.Instance.ChapterViewModel.ExistNextStage())
+                if (ChapterManager.Instance.ChapterViewModel.ExistNextStage())
                     StartCoroutine(CombatDelayAsync());
+                else
+                {
+                    OnChapterClearEvent?.Invoke();
+                }
             }
         }
     }
 
+    // 전투 시작전 딜레이
     private IEnumerator CombatDelayAsync()
     {
         ChapterManager.Instance.StartNextStage();
@@ -50,6 +58,7 @@ public class GameManager : MonoBehaviour, IGameSubject
         StartCombat();
     }
 
+    // 전투 시작
     public void StartCombat()
     {
         ChapterManager.Instance.StartCurrentStage();
