@@ -10,6 +10,11 @@ public class GameResultItemSlot : View
     [SerializeField] private Transform bg;
     [SerializeField] private RectTransform shineImageRectTransform;
 
+    [SerializeField] private GameObject commonSlot;
+    [SerializeField] private GameObject rareSlot;
+    [SerializeField] private GameObject epicSlot;
+    [SerializeField] private GameObject legendarySlot;
+
     private Sequence sequence;
 
     private ChapterViewModel chapterViewModel;
@@ -48,5 +53,18 @@ public class GameResultItemSlot : View
     {
         if (itemIconImage) itemIconImage.sprite = Resources.Load<Sprite>(chapterViewModel.RewardItemIconInfos[index].Path);
         if (itemNameText) itemNameText.text = chapterViewModel.RewardItemTextInfos[index].NameKr;
+
+        commonSlot.SetActive(false);
+        rareSlot.SetActive(false);
+        epicSlot.SetActive(false);
+        legendarySlot.SetActive(false);
+
+        switch (chapterViewModel.Items[index].RarityType)
+        {
+            case Item.RarityTypes.Common: commonSlot.SetActive(true); break;
+            case Item.RarityTypes.Rare: rareSlot.SetActive(true); break;
+            case Item.RarityTypes.Epic: epicSlot.SetActive(true); break;
+            case Item.RarityTypes.Legendary: legendarySlot.SetActive(true); break;
+        }
     }
 }
