@@ -8,6 +8,22 @@
     "path": "Images/Icons/Character/Hero/TempHero2"
   },
   {
+    "id": 30001,
+    "path": "Images/Icons/Item/Jewel/Ruby"
+  },
+  {
+    "id": 30002,
+    "path": "Images/Icons/Item/Jewel/Emerald"
+  },
+  {
+    "id": 30003,
+    "path": "Images/Icons/Item/Jewel/Obsidian"
+  },
+  {
+    "id": 30004,
+    "path": "Images/Icons/Item/Jewel/Gold"
+  },
+  {
     "id": 50001,
     "path": "Images/Icons/Skill/Thundercry"
   },

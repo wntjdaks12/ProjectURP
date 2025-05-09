@@ -5,6 +5,26 @@
     "NameEn": "Slime"
   },
   {
+    "id": 30001,
+    "NameKr": "루비",
+    "NameEn": "Ruby"
+  },
+  {
+    "id": 30002,
+    "NameKr": "에메랄드",
+    "NameEn": "Emerald"
+  },
+  {
+    "id": 30003,
+    "NameKr": "흑요석",
+    "NameEn": "Obsidian"
+  },
+  {
+    "id": 30004,
+    "NameKr": "금",
+    "NameEn": "Gold"
+  },
+  {
     "id": 50001,
     "NameKr": "천조",
     "NameEn": "Thundercry",
