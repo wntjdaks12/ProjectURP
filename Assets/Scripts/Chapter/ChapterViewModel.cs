@@ -3,7 +3,8 @@ using System.Linq;
 
 public class ChapterViewModel : ViewModel
 {
-    private ChapterInfo chapterInfo;
+    private ChapterInfo chapterInfo; // 챕터 정보
+    private ChapterRewardInfo chapterRewardInfo; // 챕터 보상 정보
 
     private int currentChapterId;
     public int CurrentChapterId 
@@ -52,7 +53,8 @@ public class ChapterViewModel : ViewModel
         CurrentStageId = 130002; // 임시로 추가 (나중에 플레이어 데이터로)
         CurrentStageIndex = 0;
 
-        chapterInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<ChapterInfo>(nameof(ChapterInfo), CurrentChapterId);
+        chapterInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<ChapterInfo>(nameof(ChapterInfo), CurrentChapterId); // 챕터 정보 가져오기
+        chapterRewardInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<ChapterRewardInfo>(nameof(ChapterRewardInfo), CurrentChapterId); // 챕터 보상 정보 가져오기
     }
 
     public bool ExistCurrentStage()
