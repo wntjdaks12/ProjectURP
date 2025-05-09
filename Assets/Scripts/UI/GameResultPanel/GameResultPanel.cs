@@ -43,7 +43,7 @@ public class GameResultPanel : View
         {
             slots[i].Init();
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }

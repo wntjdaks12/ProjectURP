@@ -8,6 +8,7 @@ public class GameResultItemSlot : View
     [SerializeField] private Image itemIconImage;
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private Transform bg;
+    [SerializeField] private RectTransform shineImageRectTransform;
 
     private Sequence sequence;
 
@@ -17,11 +18,17 @@ public class GameResultItemSlot : View
             .SetAutoKill(false) 
             .Pause()
             .Append(bg.transform.DOScale(new Vector3(1, 1, 1), 0.1f));
+
+        DOTween.Sequence()
+            .Append(shineImageRectTransform.DOAnchorPos(new Vector2(400, 400), 1f))
+            .AppendCallback(() => shineImageRectTransform.anchoredPosition = Vector2.zero)
+            .AppendInterval(3f)
+            .SetLoops(-1);
     }
 
     private void OnEnable()
     {
-        bg.transform.localScale = new Vector3(0, 3, 1);
+        bg.transform.localScale = new Vector3(0, 2, 1);
     }
 
     public void Init()
