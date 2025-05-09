@@ -50,6 +50,7 @@ public class ChapterViewModel : ViewModel
 
     public List<TextInfo> RewardItemTextInfos { get; private set; }
     public List<IconInfo> RewardItemIconInfos { get; private set; }
+    public List<Item> Items { get; private set; }
 
     public ChapterViewModel()
     {
@@ -64,12 +65,14 @@ public class ChapterViewModel : ViewModel
         {
             RewardItemTextInfos = new List<TextInfo>();
             RewardItemIconInfos = new List<IconInfo>();
+            Items = new List<Item>();
 
             for (int i = 0; i < ChapterRewardInfo.ChapterRewardItemInfos.Count; i++)
             {
                 var itemId = ChapterRewardInfo.ChapterRewardItemInfos[i].ItemId;
                 RewardItemTextInfos.Add(GameApplication.Instance.GameModel.PresetData.ReturnData<TextInfo>(nameof(TextInfo), itemId));
                 RewardItemIconInfos.Add(GameApplication.Instance.GameModel.PresetData.ReturnData<IconInfo>(nameof(IconInfo), itemId));
+                Items.Add(GameApplication.Instance.GameModel.PresetData.ReturnData<Item>(nameof(Item), itemId));
             }
         }
     }
