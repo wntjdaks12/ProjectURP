@@ -1,0 +1,28 @@
+[
+  {
+    "id": 130001,
+    "chapterRewardItemInfos": [
+      {
+        "itemId": 30001,
+        "minCount": 1,
+        "maxCount": 10
+      },
+      {
+        "itemId": 30002,
+        "minCount": 1,
+        "maxCount": 10
+      },
+      {
+        "itemId": 30003,
+        "minCount": 1,
+        "maxCount": 10
+      },
+      {
+        "itemId": 30004,
+        "minCount": 1,
+        "maxCount": 10
+      }
+    ]
+  }
+]
+  
