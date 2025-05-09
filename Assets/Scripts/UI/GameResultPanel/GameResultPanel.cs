@@ -41,16 +41,19 @@ public class GameResultPanel : View
             DestroyImmediate(parent.GetChild((lenth - 1) - i).gameObject);
         }
 
-        for (int i = 0; i < chapterViewModel.ChapterRewardInfo.ChapterRewardItemInfos.Count; i++)
+        if (chapterViewModel.ChapterRewardInfo != null && chapterViewModel.ChapterRewardInfo.ChapterRewardItemInfos != null)
         {
-            slots.Add(Instantiate(itemSlot, parent));
-        }
+            for (int i = 0; i < chapterViewModel.ChapterRewardInfo.ChapterRewardItemInfos.Count; i++)
+            {
+                slots.Add(Instantiate(itemSlot, parent));
+            }
 
-        for (int i = 0; i < slots.Count; i++)
-        {
-            slots[i].Init();
+            for (int i = 0; i < slots.Count; i++)
+            {
+                slots[i].Init(i, chapterViewModel);
 
-            yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.01f);
+            }
         }
     }
 }

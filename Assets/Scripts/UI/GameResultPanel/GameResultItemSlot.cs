@@ -12,6 +12,9 @@ public class GameResultItemSlot : View
 
     private Sequence sequence;
 
+    private ChapterViewModel chapterViewModel;
+    private int index;
+
     private void Awake()
     {
         sequence = DOTween.Sequence()
@@ -31,14 +34,19 @@ public class GameResultItemSlot : View
         bg.transform.localScale = new Vector3(0, 2, 1);
     }
 
-    public void Init()
+    public void Init(int index, ChapterViewModel chapterViewModel)
     {
-        sequence.Restart(); 
+        this.index = index;
+        this.chapterViewModel = chapterViewModel;
+
+        sequence.Restart();
+
+        UpdateUI();
     }
 
     public override void UpdateUI()
     {
-        if (itemIconImage) itemIconImage.sprite = null;
-        if (itemNameText) itemNameText.text = "null";
+        if (itemIconImage) itemIconImage.sprite = Resources.Load<Sprite>(chapterViewModel.RewardItemIconInfos[index].Path);
+        if (itemNameText) itemNameText.text = chapterViewModel.RewardItemTextInfos[index].NameKr;
     }
 }
