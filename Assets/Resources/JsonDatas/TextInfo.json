@@ -25,6 +25,16 @@
     "NameEn": "Gold"
   },
   {
+    "id": 30005,
+    "NameKr": "물컹한 갑옷",
+    "NameEn": "SquishyArmor"
+  },
+  {
+    "id": 30006,
+    "NameKr": "물컹한 신발",
+    "NameEn": "SquishyShoes"
+  },
+  {
     "id": 50001,
     "NameKr": "천조",
     "NameEn": "Thundercry",

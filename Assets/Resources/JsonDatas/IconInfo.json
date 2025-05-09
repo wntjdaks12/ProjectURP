@@ -24,6 +24,14 @@
     "path": "Images/Icons/Item/Jewel/Gold"
   },
   {
+    "id": 30005,
+    "path": "Images/Icons/Item/Equipment/SquishyArmor"
+  },
+  {
+    "id": 30006,
+    "path": "Images/Icons/Item/Equipment/SquishyShoes"
+  },
+  {
     "id": 50001,
     "path": "Images/Icons/Skill/Thundercry"
   },

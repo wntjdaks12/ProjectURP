@@ -21,6 +21,16 @@
         "itemId": 30004,
         "minCount": 1,
         "maxCount": 10
+      },
+      {
+        "itemId": 30005,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "itemId": 30006,
+        "minCount": 1,
+        "maxCount": 1
       }
     ]
   }
