@@ -6,7 +6,7 @@ public class PlayerHUDItemSlot : ItemSlot
     public override void Init(int itemId)
     {
         base.Init(itemId);
-
+        /*
         slotBtn.onClick.RemoveAllListeners();
         slotBtn.onClick.AddListener(() =>
         {
@@ -23,6 +23,6 @@ public class PlayerHUDItemSlot : ItemSlot
             
             var tooltipBox = Instantiate(Resources.Load<TooltipBox>("Prefabs/UI/TooltipBox/TooltipBox"));
             tooltipBox.Init(textInfo, transform.position, UIManager.Instance.OverrayCanvas.transform);
-        });
+        });*/
     }
 }
