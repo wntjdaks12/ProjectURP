@@ -1,13 +1,27 @@
 [
   {
     "id": 30001,
-    "skillId": 50001,
-    "ultSkillId": 50003
+    "RarityType": 0
   },
   {
     "id": 30002,
-    "skillId": 50002,
-    "ultSkillId": 0
+    "RarityType": 0
+  },
+  {
+    "id": 30003,
+    "RarityType": 0
+  },
+  {
+    "id": 30004,
+    "RarityType": 1
+  },
+  {
+    "id": 30005,
+    "RarityType": 1
+  },
+  {
+    "id": 30006,
+    "RarityType": 2
   }
 ]
   
