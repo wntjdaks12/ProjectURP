@@ -4,7 +4,7 @@ using System.Linq;
 public class ChapterViewModel : ViewModel
 {
     private ChapterInfo chapterInfo; // 챕터 정보
-    private ChapterRewardInfo chapterRewardInfo; // 챕터 보상 정보
+    public ChapterRewardInfo ChapterRewardInfo { get; private set; } // 챕터 보상 정보
 
     private int currentChapterId;
     public int CurrentChapterId 
@@ -54,7 +54,7 @@ public class ChapterViewModel : ViewModel
         CurrentStageIndex = 0;
 
         chapterInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<ChapterInfo>(nameof(ChapterInfo), CurrentChapterId); // 챕터 정보 가져오기
-        chapterRewardInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<ChapterRewardInfo>(nameof(ChapterRewardInfo), CurrentChapterId); // 챕터 보상 정보 가져오기
+        ChapterRewardInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<ChapterRewardInfo>(nameof(ChapterRewardInfo), CurrentChapterId); // 챕터 보상 정보 가져오기
     }
 
     public bool ExistCurrentStage()

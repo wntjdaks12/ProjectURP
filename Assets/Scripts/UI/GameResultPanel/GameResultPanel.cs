@@ -7,6 +7,13 @@ public class GameResultPanel : View
     [SerializeField] private GameResultItemSlot itemSlot;
     [SerializeField] private Transform parent;
 
+    private ChapterViewModel chapterViewModel;
+
+    private void Start()
+    {
+        chapterViewModel = ChapterManager.Instance.ChapterViewModel;
+    }
+
     public void Init()
     {
         OnShow();
@@ -34,7 +41,7 @@ public class GameResultPanel : View
             DestroyImmediate(parent.GetChild((lenth - 1) - i).gameObject);
         }
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < chapterViewModel.ChapterRewardInfo.ChapterRewardItemInfos.Count; i++)
         {
             slots.Add(Instantiate(itemSlot, parent));
         }
