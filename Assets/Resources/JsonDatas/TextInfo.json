@@ -35,6 +35,21 @@
     "NameEn": "SquishyShoes"
   },
   {
+    "id": 30007,
+    "NameKr": "룬[물리 공격력]",
+    "NameEn": "Rune[AttackDamage]"
+  },
+  {
+    "id": 30008,
+    "NameKr": "룬[마법 공격력]",
+    "NameEn": "Rune[AbilityPower]"
+  },
+  {
+    "id": 30009,
+    "NameKr": "룬[물리 방어력]",
+    "NameEn": "Rune[Amor]"
+  },
+  {
     "id": 50001,
     "NameKr": "천조",
     "NameEn": "Thundercry",

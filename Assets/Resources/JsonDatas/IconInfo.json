@@ -32,6 +32,18 @@
     "path": "Images/Icons/Item/Equipment/SquishyShoes"
   },
   {
+    "id": 30007,
+    "path": "Images/Icons/Item/Rune/Rune_AttackDamage"
+  },
+  {
+    "id": 30008,
+    "path": "Images/Icons/Item/Rune/Rune_AbilityPower"
+  },
+  {
+    "id": 30009,
+    "path": "Images/Icons/Item/Rune/Rune_Amor "
+  },
+  {
     "id": 50001,
     "path": "Images/Icons/Skill/Thundercry"
   },
