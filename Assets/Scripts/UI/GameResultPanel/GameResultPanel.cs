@@ -52,7 +52,13 @@ public class GameResultPanel : View
             {
                 slots[i].Init(i, chapterViewModel);
 
-                yield return new WaitForSeconds(0.01f);
+                switch (chapterViewModel.Items[i].RarityType)
+                {
+                    case Item.RarityTypes.Common: yield return new WaitForSeconds(0.01f); break;
+                    case Item.RarityTypes.Rare: yield return new WaitForSeconds(0.01f); break;
+                    case Item.RarityTypes.Epic: yield return new WaitForSeconds(0.3f); break;
+                    case Item.RarityTypes.Legendary: yield return new WaitForSeconds(0.01f); break;
+                }
             }
         }
     }
