@@ -5,26 +5,24 @@ using UnityEngine.UI;
 
 public class GameResultItemSlot : View
 {
+    [SerializeField] private Image slotImage;
     [SerializeField] private Image itemIconImage;
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private Transform bg;
     [SerializeField] private RectTransform shineImageRectTransform;
+    [SerializeField] private RectTransform backgroundEffectNode;
+    [SerializeField] private RectTransform appearEffectNode;
 
-    [SerializeField] private GameObject commonSlot;
-    [SerializeField] private GameObject rareSlot;
-    [SerializeField] private GameObject epicSlot;
-    [SerializeField] private GameObject legendarySlot;
-
-    [SerializeField] private GameObject commonEff;
-    [SerializeField] private GameObject rareEff;
-    [SerializeField] private GameObject epicEff;
-    [SerializeField] private GameObject legendaryEff;
+    private GameObject curBgEffect;
+    private GameObject curAppearEffect;
 
     private Sequence shineSlotSequence;
     private Sequence slotSequence;
 
     private ChapterViewModel chapterViewModel;
     private int index;
+
+    public RewardItemSlotStyleLibrary rewardItemSlotstyleLibrary;
 
     private void Awake()
     {    
@@ -41,6 +39,7 @@ public class GameResultItemSlot : View
         this.index = index;
         this.chapterViewModel = chapterViewModel;
 
+        // 등급별 트위닝
         switch (chapterViewModel.Items[index].RarityType)
         {
             case Item.RarityTypes.Common: slotSequence = SetBounceStretch(); break;
@@ -56,26 +55,30 @@ public class GameResultItemSlot : View
 
     public override void UpdateUI()
     {
-        if (itemIconImage) itemIconImage.sprite = Resources.Load<Sprite>(chapterViewModel.RewardItemIconInfos[index].Path);
-        if (itemNameText) itemNameText.text = chapterViewModel.RewardItemTextInfos[index].NameKr;
-
-        commonSlot.SetActive(false);
-        rareSlot.SetActive(false);
-        epicSlot.SetActive(false);
-        legendarySlot.SetActive(false);
-
-        commonEff.SetActive(false);
-        rareEff.SetActive(false);
-        epicEff.SetActive(false);
-        legendaryEff.SetActive(false);
-
-        switch (chapterViewModel.Items[index].RarityType)
+        var style = rewardItemSlotstyleLibrary.GetStyle(chapterViewModel.Items[index].RarityType);
+        if (style != null)
         {
-            case Item.RarityTypes.Common: commonSlot.SetActive(true); commonEff.SetActive(true); break;
-            case Item.RarityTypes.Rare: rareSlot.SetActive(true); rareEff.SetActive(true); break;
-            case Item.RarityTypes.Epic: epicSlot.SetActive(true); epicEff.SetActive(true); break;
-            case Item.RarityTypes.Legendary: legendarySlot.SetActive(true); legendaryEff.SetActive(true); break;
+            slotImage.sprite = style.slotImage; // 등급별 슬롯 이미지 설정
+            itemNameText.color = style.textColor; // 등급별 아이템 이름 컬러 설정
+
+            // 등급별 슬롯 백그라운드 이펙트 생성 [자주 호출하는게 아니라서 오브젝트 풀링 X]
+            if (curBgEffect != null)
+            {
+                Destroy(curBgEffect);
+            }
+            if (style.backgroundEffect && backgroundEffectNode) curBgEffect = Instantiate(style.backgroundEffect, backgroundEffectNode);
+
+            // 등급별 슬롯 출현 이펙트 생성 [자주 호출하는게 아니라서 오브젝트 풀링 X]
+            if (curAppearEffect != null)
+            {
+                Destroy(curAppearEffect);
+            }
+            if (style.appearEffect && appearEffectNode) curAppearEffect = Instantiate(style.appearEffect, appearEffectNode);
         }
+
+        if (itemIconImage) itemIconImage.sprite = Resources.Load<Sprite>(chapterViewModel.RewardItemIconInfos[index].Path); // 아이템 아이콘 이미지 설정
+        if (itemNameText) itemNameText.text = chapterViewModel.RewardItemTextInfos[index].NameKr; // 아이템 이름 설정
+
     }
 
     #region 트위닝
