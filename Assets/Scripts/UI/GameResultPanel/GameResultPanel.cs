@@ -6,6 +6,7 @@ public class GameResultPanel : View
 {
     [SerializeField] private GameResultItemSlot itemSlot;
     [SerializeField] private Transform parent;
+    [SerializeField] private CanvasGroup buttonCanvasGroup;
 
     private ChapterViewModel chapterViewModel;
 
@@ -32,6 +33,8 @@ public class GameResultPanel : View
 
     private IEnumerator UpdateSlotAsync()
     {
+        buttonCanvasGroup.alpha = 0;
+
         var slots = new List<GameResultItemSlot>();
 
         // 슬롯 풀링 미구현으로 임시방편으로 DestroyImmediate 사용
@@ -61,5 +64,9 @@ public class GameResultPanel : View
                 }
             }
         }
+
+        yield return new WaitForSeconds(0.5f);
+
+        buttonCanvasGroup.alpha = 1;
     }
 }
