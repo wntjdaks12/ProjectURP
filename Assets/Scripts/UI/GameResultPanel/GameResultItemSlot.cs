@@ -8,6 +8,7 @@ public class GameResultItemSlot : View
     [SerializeField] private Image slotImage;
     [SerializeField] private Image itemIconImage;
     [SerializeField] private TextMeshProUGUI itemNameText;
+    [SerializeField] private TextMeshProUGUI itemCountText;
     [SerializeField] private Transform bg;
     [SerializeField] private RectTransform shineImageRectTransform;
     [SerializeField] private RectTransform backgroundEffectNode;
@@ -78,6 +79,7 @@ public class GameResultItemSlot : View
 
         if (itemIconImage) itemIconImage.sprite = Resources.Load<Sprite>(chapterViewModel.RewardItemIconInfos[index].Path); // 아이템 아이콘 이미지 설정
         if (itemNameText) itemNameText.text = chapterViewModel.RewardItemTextInfos[index].NameKr; // 아이템 이름 설정
+        if (itemCountText) itemCountText.text = chapterViewModel.ChapterRewardInfo.ChapterRewardItemInfos[index].GetRewardCount().ToString(); // 보상 아이템 개수 설정
 
     }
 
