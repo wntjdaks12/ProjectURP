@@ -2,11 +2,17 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 
-public class SkillObject : EntityObject
+public class SkillObject : EntityObject, IGameObserver
 {
     private Skill skill;
 
     public SkillSystem SkillSystem { get; set; }
+
+    private void OnEnable()
+    {
+        // 관찰자 등록
+        GameManager.Instance.Register(this);
+    }
 
     public override void Init(Entity entity)
     {
@@ -25,5 +31,28 @@ public class SkillObject : EntityObject
     public List<ActorObject> GetTargets()
     {
         return Physics.OverlapSphere(transform.position, 7, SkillSystem.GetTargetLayer(SkillSystem.SkillInfo.TargetType)).Select(x => x.GetComponentInParent<ActorObject>()).ToList();
+    }
+
+    private void OnDisable()
+    {
+        // 관찰자 제거
+        GameManager.Instance.Remove(this);
+    }
+
+    public void StartCombatNotify()
+    {
+    }
+
+    public void CombatNotify()
+    {
+    }
+
+    public void IdleNotify()
+    {
+    }
+
+    public void EndCombatNotify()
+    {
+        OnRemoveEntity();
     }
 }
