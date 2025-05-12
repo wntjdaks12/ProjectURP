@@ -145,8 +145,6 @@ public class HeroController : MonoBehaviour, IGameObserver
         {
             heroObject.OnConsumeMp(); // 마나 소모
 
-            TimeLineManager.Instance.UltSkillEffectTimeLineDirector.Play();
-
             heroObject.UseSkill(SkillInfo.SkillClassTypes.Ultimate);
         }
         else
