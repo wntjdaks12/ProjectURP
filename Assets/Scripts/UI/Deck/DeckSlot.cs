@@ -30,7 +30,8 @@ public class DeckSlot : View
                 // 洒绢肺 积己
                 var heroData = deckViewModel.PlayerViewModel.HeroDatas[index];
                 var heroObj = GameApplication.Instance.EntityController.Spawn<Hero, HeroObject>(heroData.id, new Vector3(0, 6.937001f, 0), Quaternion.identity);
-       
+                deckViewModel.PlayerViewModel.HeroObject = heroObj;
+
                 // 家券 VFX 积己
                 GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(40005, heroObj.transform.position, Quaternion.identity);
 
