@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour, IGameSubject
 
         yield return new WaitForSeconds(3f);
 
-        StartCombat();
+        RestartCombat();
     }
 
     // 전투 시작
@@ -66,6 +66,16 @@ public class GameManager : MonoBehaviour, IGameSubject
         ChapterManager.Instance.StartCurrentStage();
 
         TimeLineManager.Instance.CombatTimeLine.Play();
+
+        StartCombatNotify(); // 전투 시작 상황을 알림
+
+        isCombat = true;
+    }
+
+    // 전투 다시 시작
+    private void RestartCombat()
+    {
+        ChapterManager.Instance.StartCurrentStage();
 
         CombatNotify(); // 전투 상황을 알림
 
@@ -89,6 +99,14 @@ public class GameManager : MonoBehaviour, IGameSubject
     public void Remove(IGameObserver observer)
     {
         observers.Remove(observer);
+    }
+
+    public void StartCombatNotify()
+    {
+        for (int i = 0; i < observers.Count; i++)
+        {
+            observers[i].StartCombatNotify();
+        }
     }
 
     public void IdleNotify()

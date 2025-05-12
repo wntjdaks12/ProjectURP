@@ -14,6 +14,8 @@ public class HeroController : MonoBehaviour, IGameObserver
 
     private Coroutine randomAsync;
 
+    private MiniHUDObject miniHUDObj;
+
     private void OnEnable()
     {
         isCombat = false;
@@ -94,6 +96,22 @@ public class HeroController : MonoBehaviour, IGameObserver
     #endregion
 
     #region 옵저버 패턴
+    public void StartCombatNotify()
+    {
+        if (randomAsync != null)
+        {
+            StopCoroutine(randomAsync);
+        }
+
+        randomAsync = null;
+
+        // 미니 HUD 생성
+        miniHUDObj = GameApplication.Instance.EntityController.Spawn<MiniHUD, MiniHUDObject>(110002, Camera.main.WorldToScreenPoint(heroObject.MiniHUDNode.position), Quaternion.identity, UIManager.Instance.MiniHUDPanel);
+        miniHUDObj.Init(heroObject, heroObject.Hero.StatAbility);
+
+        isCombat = true;
+    }
+
     public void IdleNotify()
     {
         if (randomAsync != null)
@@ -115,10 +133,6 @@ public class HeroController : MonoBehaviour, IGameObserver
 
         randomAsync = null;
 
-        // 미니 HUD 생성
-        var miniHUDObj = GameApplication.Instance.EntityController.Spawn<MiniHUD, MiniHUDObject>(110002, Camera.main.WorldToScreenPoint(heroObject.MiniHUDNode.position), Quaternion.identity, UIManager.Instance.MiniHUDPanel);
-        miniHUDObj.Init(heroObject, heroObject.Hero.StatAbility);
-
         isCombat = true;
     }
 
@@ -132,6 +146,8 @@ public class HeroController : MonoBehaviour, IGameObserver
         randomAsync = null;
 
         heroObject.OnMove(heroObject.transform.position);
+
+        miniHUDObj.Entity.OnRemoveData();
 
         isCombat = false;
         isEndCombat = true;
