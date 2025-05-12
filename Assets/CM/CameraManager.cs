@@ -42,4 +42,14 @@ public class CameraManager : MonoBehaviour
                 break;
         }
     }
+
+    public void SwitchChapterClearuCam()
+    {
+        var playerViewModel = PlayerManager.Instance.PlayerViewModel;
+
+        if (playerViewModel != null && playerViewModel.HeroObject != null)
+        {
+            SwitchCamera(CameraTypes.ChapterClear, playerViewModel.HeroObject.transform, playerViewModel.HeroObject.transform);
+        }
+    }
 }

@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour, IGameSubject
                 else
                 {
                     EndCombat(); // 전투 끝나는 상황을 알림
-                    CameraManager.Instance.SwitchCamera(CameraManager.CameraTypes.ChapterClear, GameObject.Find("TempHero1(Clone)").transform, GameObject.Find("TempHero1(Clone)").transform);
+
                     OnChapterClearEvent?.Invoke();
                 }
             }
