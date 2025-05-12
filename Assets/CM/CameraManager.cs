@@ -3,37 +3,43 @@ using Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
-    [field: SerializeField] public CinemachineVirtualCameraBase NormaalCam { get; private set; }
+    public enum CameraTypes
+    {
+        Default,
+        CharacterInfoMenu,
+        ChapterClear,
+    }
+
+    [field: SerializeField] public CinemachineVirtualCameraBase DefaultCam { get; private set; }
     [field: SerializeField] public CinemachineVirtualCameraBase CharacterInfoMenuCam { get; private set; }
+    [field: SerializeField] public CinemachineVirtualCameraBase ChapterClearuCam { get; private set; }
 
     private static CameraManager instance;
     public static CameraManager Instance { get => instance ??= FindObjectOfType<CameraManager>(); }
 
-    public void ActiveNormalCam()
+    public void SwitchCamera(CameraTypes type, Transform follow = null, Transform lookAt = null)
     {
-        if (NormaalCam)
-        {
-            NormaalCam.Priority = 20;
-        }
+        DefaultCam.Priority = 0;
+        CharacterInfoMenuCam.Priority = 0;
+        ChapterClearuCam.Priority = 0;
 
-        if (CharacterInfoMenuCam)
+        switch (type)
         {
-            CharacterInfoMenuCam.Priority = 10;
-            CharacterInfoMenuCam.LookAt = null;
-        }
-    }   
-
-    public void ActiveChaaracterInfoMenuCam(GameObject target)
-    {
-        if (NormaalCam)
-        {
-            NormaalCam.Priority = 10;
-        }
-
-        if (CharacterInfoMenuCam)
-        {
-            CharacterInfoMenuCam.Priority = 20;
-            CharacterInfoMenuCam.LookAt = target.transform;
+            case CameraTypes.Default:
+                DefaultCam.Priority = 10;
+                DefaultCam.Follow = follow;
+                DefaultCam.LookAt = lookAt;
+                break;
+            case CameraTypes.CharacterInfoMenu:
+                CharacterInfoMenuCam.Priority = 10;
+                CharacterInfoMenuCam.Follow = follow;
+                CharacterInfoMenuCam.LookAt = lookAt;
+                break;
+            case CameraTypes.ChapterClear:
+                ChapterClearuCam.Priority = 10;
+                ChapterClearuCam.Follow = follow;
+                ChapterClearuCam.LookAt = lookAt;
+                break;
         }
     }
 }

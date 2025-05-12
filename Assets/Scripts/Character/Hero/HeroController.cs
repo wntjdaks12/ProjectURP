@@ -10,12 +10,14 @@ public class HeroController : MonoBehaviour, IGameObserver
     private bool istemp;
 
     private bool isCombat; // 전투 상황인지 체크
+    private bool isEndCombat; // 전투 끝인지 체크
 
     private Coroutine randomAsync;
 
     private void OnEnable()
     {
         isCombat = false;
+        isEndCombat = false;
 
         // 관찰자 등록
         GameManager.Instance.Register(this);
@@ -30,9 +32,11 @@ public class HeroController : MonoBehaviour, IGameObserver
     {
         if (heroObject == null) return;
 
+        if (isEndCombat) return;
+
         if (!isCombat)
         {
-            if(randomAsync == null) IdleNotify();
+            if (randomAsync == null) IdleNotify();
         }
         else
         {
@@ -116,6 +120,21 @@ public class HeroController : MonoBehaviour, IGameObserver
         miniHUDObj.Init(heroObject, heroObject.Hero.StatAbility);
 
         isCombat = true;
+    }
+
+    public void EndCombatNotify()
+    {
+        if (randomAsync != null)
+        {
+            StopCoroutine(randomAsync);
+        }
+
+        randomAsync = null;
+
+        heroObject.OnMove(heroObject.transform.position);
+
+        isCombat = false;
+        isEndCombat = true;
     }
     #endregion
 

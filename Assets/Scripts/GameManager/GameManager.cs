@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour, IGameSubject
                     StartCoroutine(CombatDelayAsync());
                 else
                 {
+                    EndCombat(); // 전투 끝나는 상황을 알림
+                    CameraManager.Instance.SwitchCamera(CameraManager.CameraTypes.ChapterClear, GameObject.Find("TempHero1(Clone)").transform, GameObject.Find("TempHero1(Clone)").transform);
                     OnChapterClearEvent?.Invoke();
                 }
             }
@@ -70,6 +72,14 @@ public class GameManager : MonoBehaviour, IGameSubject
         isCombat = true;
     }
 
+    // 전투 종료
+    public void EndCombat()
+    {
+        EndCombatNotify(); // 전투 종료 알림
+
+        isCombat = false;
+    }
+
     #region 옵저버 패턴
     public void Register(IGameObserver observer)
     {
@@ -94,6 +104,14 @@ public class GameManager : MonoBehaviour, IGameSubject
         for (int i = 0; i < observers.Count; i++)
         {
             observers[i].CombatNotify();
+        }
+    }
+
+    public void EndCombatNotify()
+    {
+        for (int i = 0; i < observers.Count; i++)
+        {
+            observers[i].EndCombatNotify();
         }
     }
     #endregion

@@ -5,4 +5,5 @@ public interface IGameSubject
 
     public void IdleNotify();
     public void CombatNotify();
+    public void EndCombatNotify();
 }
