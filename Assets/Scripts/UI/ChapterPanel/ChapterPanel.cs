@@ -15,42 +15,26 @@ public class ChapterPanel : View
 
     private ChapterViewModel chapterViewModel;
 
-    private Coroutine startTimeLineAsync;
-
-    private void Start()
+    private void OnEnable()
     {
-        chapterViewModel = ChapterManager.Instance.ChapterViewModel;
-
-        Init();
-
         chapterViewModel.PropertyChanged += OnViewModelPropertyChanged;
     }
 
     public void Init()
     {
+        if(chapterViewModel == null) chapterViewModel = ChapterManager.Instance.ChapterViewModel;
+
+        OnShow();
+
         UpdateUI();
-
-        StartTimeLine(0.5f);
-    }
-
-    #region 타임라인
-    public void StartTimeLine(float initDelay)
-    {
-        if (startTimeLineAsync != null)
-        {
-            StopCoroutine(startTimeLineAsync);
-        }
-
-        startTimeLineAsync = StartCoroutine(StartTimeLineAsync(initDelay));
-    }
-
-    private IEnumerator StartTimeLineAsync(float initDelay)
-    {
-        yield return new WaitForSeconds(initDelay);
 
         playableDirector?.Play();
     }
-    #endregion
+
+    private void OnDisable()
+    {
+        chapterViewModel.PropertyChanged -= OnViewModelPropertyChanged;
+    }
 
     #region UI 관련 업데이트
     public void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -59,7 +43,7 @@ public class ChapterPanel : View
         {
             UpdateUI();
 
-            StartTimeLine(0f);
+            playableDirector?.Play();
         }
     }
 

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour, IGameSubject
 
     private bool isCombat; // 전투 상황인지 체크
 
+    public UnityEvent OnStartCombatEvent;
+    public UnityEvent OnRestartCombatEvent;
     public UnityEvent OnChapterClearEvent;
 
     private void Awake()
@@ -26,6 +28,16 @@ public class GameManager : MonoBehaviour, IGameSubject
     private void Start()
     {
         GameViewModel.SetLanguage(GameViewModel.LanguageTypes.Kr);
+
+        // 히어로 생성
+        var heroData = PlayerManager.Instance.PlayerViewModel.HeroDatas[0];
+        var heroObj = GameApplication.Instance.EntityController.Spawn<Hero, HeroObject>(heroData.id, new Vector3(0, 6.937001f, 0), Quaternion.identity);
+        PlayerManager.Instance.PlayerViewModel.HeroObject = heroObj;
+
+        // 소환 VFX 생성
+        GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(40005, heroObj.transform.position, Quaternion.identity);
+
+        StartCombat();
     }
 
     private void Update()
@@ -70,6 +82,8 @@ public class GameManager : MonoBehaviour, IGameSubject
         StartCombatNotify(); // 전투 시작 상황을 알림
 
         isCombat = true;
+
+        OnStartCombatEvent?.Invoke();
     }
 
     // 전투 다시 시작
@@ -80,6 +94,8 @@ public class GameManager : MonoBehaviour, IGameSubject
         CombatNotify(); // 전투 상황을 알림
 
         isCombat = true;
+
+        OnRestartCombatEvent?.Invoke();
     }
 
     // 전투 종료
