@@ -14,9 +14,6 @@ public class CameraManager : MonoBehaviour
     [field: SerializeField] public CinemachineVirtualCameraBase CharacterInfoMenuCam { get; private set; }
     [field: SerializeField] public CinemachineVirtualCameraBase ChapterClearuCam { get; private set; }
 
-    private static CameraManager instance;
-    public static CameraManager Instance { get => instance ??= FindObjectOfType<CameraManager>(); }
-
     public void SwitchCamera(CameraTypes type, Transform follow = null, Transform lookAt = null)
     {
         DefaultCam.Priority = 0;

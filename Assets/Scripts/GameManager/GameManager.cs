@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour, IGameSubject
     public UnityEvent OnChapterClearEvent;
 
     private SpawnManager spawnManager;
+    private CameraManager cameraManager;
 
     private void Awake()
     {
@@ -27,9 +28,12 @@ public class GameManager : MonoBehaviour, IGameSubject
         observers = new List<IGameObserver>();
     }
 
-    public void Init(SpawnManager spawnManager)
+    public void Init(SpawnManager spawnManager, CameraManager cameraManager)
     {
         this.spawnManager = spawnManager;
+        this.cameraManager = cameraManager;
+
+        spawnManager.OnSpawned += (gameObject) => cameraManager.SwitchCamera(CameraManager.CameraTypes.Default, gameObject.transform);
     }
 
     private void Start()
@@ -37,8 +41,6 @@ public class GameManager : MonoBehaviour, IGameSubject
         GameViewModel.SetLanguage(GameViewModel.LanguageTypes.Kr);
 
         spawnManager.SpawnEntity(SpawnType.Player, new Vector3(0, 6.937001f, 0));
-
-        CameraManager.Instance.SwitchCamera(CameraManager.CameraTypes.Default, PlayerManager.Instance.PlayerViewModel.HeroObject.transform);
 
         StartCombat();
     }

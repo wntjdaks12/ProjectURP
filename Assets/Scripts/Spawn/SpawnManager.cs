@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 public enum SpawnType { Player, Monster }
 
 public class SpawnManager : MonoBehaviour
 {
+    public event Action<GameObject> OnSpawned;
+
     public void SpawnEntity(SpawnType type, Vector3 position)
     {
         switch (type)
@@ -17,6 +20,8 @@ public class SpawnManager : MonoBehaviour
 
                 // 社発 VFX 持失
                 GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(40005, heroObj.transform.position, Quaternion.identity);
+
+                OnSpawned?.Invoke(heroObj.gameObject);
 
                 break;
             case SpawnType.Monster:
