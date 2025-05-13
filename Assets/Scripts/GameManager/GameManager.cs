@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour, IGameSubject
     public UnityEvent OnRestartCombatEvent;
     public UnityEvent OnChapterClearEvent;
 
+    private SpawnManager spawnManager;
+
     private void Awake()
     {
         GameViewModel = new GameViewModel();
@@ -25,19 +27,18 @@ public class GameManager : MonoBehaviour, IGameSubject
         observers = new List<IGameObserver>();
     }
 
+    public void Init(SpawnManager spawnManager)
+    {
+        this.spawnManager = spawnManager;
+    }
+
     private void Start()
     {
         GameViewModel.SetLanguage(GameViewModel.LanguageTypes.Kr);
 
-        // 洒绢肺 积己
-        var heroData = PlayerManager.Instance.PlayerViewModel.HeroDatas[0];
-        var heroObj = GameApplication.Instance.EntityController.Spawn<Hero, HeroObject>(heroData.id, new Vector3(0, 6.937001f, 0), Quaternion.identity);
-        PlayerManager.Instance.PlayerViewModel.HeroObject = heroObj;
+        spawnManager.SpawnEntity(SpawnType.Player, new Vector3(0, 6.937001f, 0));
 
-        // 家券 VFX 积己
-        GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(40005, heroObj.transform.position, Quaternion.identity);
-
-        CameraManager.Instance.SwitchCamera(CameraManager.CameraTypes.Default, heroObj.transform);
+        CameraManager.Instance.SwitchCamera(CameraManager.CameraTypes.Default, PlayerManager.Instance.PlayerViewModel.HeroObject.transform);
 
         StartCombat();
     }
