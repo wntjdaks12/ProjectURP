@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour, IGameSubject
         // 社発 VFX 持失
         GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(40005, heroObj.transform.position, Quaternion.identity);
 
+        CameraManager.Instance.SwitchCamera(CameraManager.CameraTypes.Default, heroObj.transform);
+
         StartCombat();
     }
 
