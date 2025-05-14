@@ -41,7 +41,7 @@ public class DropItemObject : EntityObject
 
     private void Update()
     {
-        transform.LookAt(Camera.main.transform); // 빌보드 효과
+       // transform.LookAt(Camera.main.transform); // 빌보드 효과
 
         if(!IsPickupAvailable) CheckPickupAvailable(); // 드랍 아이템을 주울 수 있는 상태인지 체크
 

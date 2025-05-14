@@ -1,9 +1,15 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class MoneyDropItemObject : DropItemObject
+public class DropItemTweener : MonoBehaviour
 {
+    private enum TweenerTypes{ Shake }
+
+    [SerializeField] private TweenerTypes tweenerType;
+
     private Sequence shakeSequence;
+
+    private Quaternion oriRot;
 
     private void Awake()
     {
@@ -13,18 +19,17 @@ public class MoneyDropItemObject : DropItemObject
             .Pause()
             .Append(transform.DOShakeRotation(
                     duration: 0.5f,  // ½¦ÀÌÅ© ½Ã°£
-                    strength: new Vector3(0, 0, 15), // ½¦ÀÌÅ© È¸Àü
-                    vibrato: 10, // ½¦ÀÌÅ© È½¼ö
+                    strength: new Vector3(40, 0, 40), // ½¦ÀÌÅ© È¸Àü
+                    vibrato: 30, // ½¦ÀÌÅ© È½¼ö
                     randomness: 90, // ·£´ý
                     fadeOut: true // ½¦ÀÌÅ© ÆäÀÌµå ¾Æ¿ô
-                )).OnComplete(() =>
-                {
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                });
+             ));
     }
 
     private void OnEnable()
     {
+        transform.rotation = Quaternion.Euler(0, Random.Range(-360f, 361f), 0);
+
         // ½¦ÀÌÅ© Æ®À©½º Àç»ý
         shakeSequence.Restart();
     }
