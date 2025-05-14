@@ -16,6 +16,7 @@ public class Monster : Character
             {
                 if (data.DropProbability >= UnityEngine.Random.Range(1, 101))
                 {
+                    GameApplication.Instance.EntityController.Spawn<VFX, VFXObject>(40006, Transform.position, Quaternion.identity);
                     GameApplication.Instance.EntityController.Spawn<DropItem, DropItemObject>(70001, Transform.position, Quaternion.identity);
                 }
 

@@ -32,6 +32,10 @@
     "path": "Prefabs/VFXs/SummonVFX"
   },
   {
+    "id": 40006,
+    "path": "Prefabs/VFXs/DropItem/Money/Money_Eff"
+  },
+  {
     "id": 60001,
     "path": "Prefabs/SkillObjects/Thundercry"
   },

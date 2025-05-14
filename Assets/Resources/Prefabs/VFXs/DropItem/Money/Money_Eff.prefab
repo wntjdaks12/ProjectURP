@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4362577007882396852}
+  - component: {fileID: -7725773572296536387}
   m_Layer: 0
   m_Name: Money_Eff
   m_TagString: Untagged
@@ -32,6 +33,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7725773572296536387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988896394579677641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970e6aa0b5aae3946a87281036cbb4bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <animator>k__BackingField: {fileID: 0}
+  <animationHandler>k__BackingField: {fileID: 0}
+  <Rigidbody>k__BackingField: {fileID: 0}
 --- !u!1001 &1202434835576459281
 PrefabInstance:
   m_ObjectHideFlags: 0
