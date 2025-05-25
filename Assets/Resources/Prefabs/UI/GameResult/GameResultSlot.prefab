@@ -208,7 +208,7 @@ MonoBehaviour:
   shineImageRectTransform: {fileID: 8655654773149653890}
   backgroundEffectNode: {fileID: 4726186589272473848}
   appearEffectNode: {fileID: 2396409306030690591}
-  rewardItemSlotstyleLibrary: {fileID: 11400000, guid: bbcc868a2c64f734682d1701f7e2fa6d, type: 2}
+  rewardItemSlotstyleLibrary: {fileID: 11400000, guid: 0a3d2f4385a515448bb3c03a58b46824, type: 2}
 --- !u!1 &109583238079899535
 GameObject:
   m_ObjectHideFlags: 0
