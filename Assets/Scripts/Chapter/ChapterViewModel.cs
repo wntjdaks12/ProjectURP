@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ChapterViewModel : ViewModel
 {
+    private ChapterLibrary chapterLibrary;
     private ChapterInfo chapterInfo; // 챕터 정보
     public ChapterRewardInfo ChapterRewardInfo { get; private set; } // 챕터 보상 정보
 
     private int currentChapterId;
-    public int CurrentChapterId 
+    public int CurrentChapterId
     {
         get { return currentChapterId; }
         set
@@ -26,7 +27,7 @@ public class ChapterViewModel : ViewModel
     }
 
     private int currentStageId;
-    public int CurrentStageId 
+    public int CurrentStageId
     {
         get { return currentStageId; }
         set
@@ -57,6 +58,8 @@ public class ChapterViewModel : ViewModel
         CurrentChapterId = 130001; // 임시로 추가 (나중에 플레이어 데이터로)
         CurrentStageId = 130002; // 임시로 추가 (나중에 플레이어 데이터로)
         CurrentStageIndex = 0;
+
+        chapterLibrary = Resources.Load<ChapterLibrary>("ScriptableObject/Chapter/ChapterLibrary");
 
         chapterInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<ChapterInfo>(nameof(ChapterInfo), CurrentChapterId); // 챕터 정보 가져오기
         ChapterRewardInfo = GameApplication.Instance.GameModel.PresetData.ReturnData<ChapterRewardInfo>(nameof(ChapterRewardInfo), CurrentChapterId); // 챕터 보상 정보 가져오기
@@ -124,8 +127,21 @@ public class ChapterViewModel : ViewModel
         }
     }
 
-    public StageInfo GetStageInfo()
+    private ChapterLibrary GetChapterLibrary()
     {
-        return chapterInfo.StageInfos.Where(x => x.Index == CurrentStageIndex).FirstOrDefault();
+        if (chapterLibrary == null) Debug.LogError("챕터 라이브러리를 찾을 수 없음");
+
+        return chapterLibrary;
+    }
+
+    public ChapterSpawnInfo GetChapterSpawnInfo()
+    {
+        var chapterLibrary = GetChapterLibrary();
+
+        var chapterSpawnInfo = chapterLibrary.GetData(CurrentChapterId, CurrentStageIndex);
+
+        if (chapterSpawnInfo == null) Debug.LogError($"{CurrentChapterId}챕터의 {CurrentStageIndex}스테이지에 해당되는 스폰 정보를 찾을 수 없음");
+
+        return chapterSpawnInfo;
     }
 }
