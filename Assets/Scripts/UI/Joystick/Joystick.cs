@@ -39,22 +39,22 @@ public class Joystick : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            totalDirection += transform.forward;
+            totalDirection += Vector3.forward;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            totalDirection += transform.forward * -1;
+            totalDirection += Vector3.back;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            totalDirection += transform.right * -1;
+            totalDirection += Vector3.left;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            totalDirection += transform.right;
+            totalDirection += Vector3.right;
         }
 
         InputDirection = totalDirection;

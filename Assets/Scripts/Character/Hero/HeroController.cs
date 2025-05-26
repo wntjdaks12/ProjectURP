@@ -12,9 +12,16 @@ public class HeroController : MonoBehaviour, IGameObserver
     private bool isCombat; // 전투 상황인지 체크
     private bool isEndCombat; // 전투 끝인지 체크
 
-    private Coroutine randomAsync;
-
     private MiniHUDObject miniHUDObj;
+
+    private Joystick joystick;
+
+    private void Awake()
+    {
+        joystick = FindObjectOfType<Joystick>();
+
+        Debug.Assert(joystick != null, "조이스틱 연결 x");
+    }
 
     private void OnEnable()
     {
@@ -36,9 +43,10 @@ public class HeroController : MonoBehaviour, IGameObserver
 
         if (isEndCombat) return;
 
+        heroObject.OnDirecMove(joystick.InputDirection);
+        
         if (!isCombat)
         {
-            if (randomAsync == null) IdleNotify();
         }
         else
         {
@@ -50,13 +58,6 @@ public class HeroController : MonoBehaviour, IGameObserver
                 {
                     istemp = true;
                     heroObject.InitSkill();
-                }
-
-                var targetMonster = monsterObjs.OrderBy(x => Vector3.Distance(x.transform.position, heroObject.transform.position)).FirstOrDefault();
-
-                if (monsterObjs.Length >= 1)
-                {
-                    heroObject.OnMove(targetMonster.transform.position);
                 }
             }
         }
@@ -98,13 +99,6 @@ public class HeroController : MonoBehaviour, IGameObserver
     #region 옵저버 패턴
     public void StartCombatNotify()
     {
-        if (randomAsync != null)
-        {
-            StopCoroutine(randomAsync);
-        }
-
-        randomAsync = null;
-
         // 미니 HUD 생성
         miniHUDObj = GameApplication.Instance.EntityController.Spawn<MiniHUD, MiniHUDObject>(110002, Camera.main.WorldToScreenPoint(heroObject.MiniHUDNode.position), Quaternion.identity, UIManager.Instance.MiniHUDPanel);
         miniHUDObj.Init(heroObject, heroObject.Hero.StatAbility);
@@ -114,37 +108,16 @@ public class HeroController : MonoBehaviour, IGameObserver
 
     public void IdleNotify()
     {
-        if (randomAsync != null)
-        {
-            StopCoroutine(randomAsync);
-        }
-
-        randomAsync = StartCoroutine(StartRandomAsync());
-
         isCombat = false;
     }
 
     public void CombatNotify()
     {
-        if (randomAsync != null)
-        {
-            StopCoroutine(randomAsync);
-        }
-
-        randomAsync = null;
-
         isCombat = true;
     }
 
     public void EndCombatNotify()
     {
-        if (randomAsync != null)
-        {
-            StopCoroutine(randomAsync);
-        }
-
-        randomAsync = null;
-
         heroObject.OnMove(heroObject.transform.position);
 
         miniHUDObj.Entity.OnRemoveData();

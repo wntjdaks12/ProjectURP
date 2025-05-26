@@ -66,6 +66,40 @@ public class CharacterObject : ActorObject
         navMeshAgent.speed = Character.StatAbility.CurrentSpeed;
     }
 
+    public virtual void OnDirecMove(Vector3 direction)
+    {
+        if (direction == Vector3.zero) return;
+
+        var cameraForward = Camera.main.transform.forward;
+        var cameraRight = Camera.main.transform.right;
+
+        cameraForward.y = 0;
+        cameraRight.y = 0;
+
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        var moveDirection = cameraForward * direction.z + cameraRight * direction.x;
+        moveDirection.Normalize();
+
+        if (moveDirection != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+        }
+
+        var movement = transform.forward * Character.StatAbility.CurrentSpeed * Time.deltaTime;
+        var targetPosition = transform.position + movement;
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(targetPosition, out hit, 1.0f, NavMesh.AllAreas))
+        {
+            navMeshAgent.Move(hit.position - transform.position);
+        }
+
+
+        state.OnMove(this);
+    }
+
     public override void OnHit(int damage)
     {
         base.OnHit(damage);
