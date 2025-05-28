@@ -5,7 +5,7 @@ using System.Linq;
 
 public class CharacterObject : ActorObject
 {
-    protected NavMeshAgent navMeshAgent;
+    public NavMeshAgent navMeshAgent { get; private set; }
 
     public Character Character { get; private set; }
 

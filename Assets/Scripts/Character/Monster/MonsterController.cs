@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,6 +7,20 @@ public class MonsterController : MonoBehaviour
     public MonsterObject monsterObject;
 
     private Transform target;
+
+    private bool hasArrived; // 도착 지점에 있는지
+
+    private IEnumerator checkStateAsync;
+
+    private MonsterAIData monsterAIData; // 몬스터 ai 데이터
+
+    private void Awake()
+    {
+        Debug.Assert(monsterObject != null, "몬스터 오브젝트 없음");
+
+        monsterAIData = Resources.Load<MonsterAIData>("ScriptableObject/MonsterAI/FiledMonsterAIData");
+        Debug.Assert(monsterAIData != null, "몬스터 AI 데이터 Null");
+    }
 
     public void OnEnable()
     {
@@ -19,12 +34,14 @@ public class MonsterController : MonoBehaviour
         {
             this.target = target;
         };
+
+        // 상태 코루틴 시작
+        checkStateAsync = CheckStateAsync();
+        StartCoroutine(checkStateAsync);
     }
 
     private void Update()
     {
-        if (monsterObject == null) return;
-
         if (target != null)
         {
             if (!target.gameObject.activeInHierarchy)
@@ -38,20 +55,73 @@ public class MonsterController : MonoBehaviour
         }
         else
         {
-            var randPoint = Random.insideUnitSphere * 5;
-            randPoint.y = monsterObject.transform.position.y;
+        }
 
-            var pos = monsterObject.transform.position;
+        if (!hasArrived) // 도착 지점에 가지 않을 경우
+        {
+            // 도착 지점까지 갈 경우
+            if (monsterObject.navMeshAgent.remainingDistance <= monsterObject.navMeshAgent.stoppingDistance)
+            {
+                hasArrived = true;
 
-            NavMeshHit navHit;
-            if (NavMesh.SamplePosition(pos + randPoint, out navHit, 1000, NavMesh.AllAreas))
-            {
-                monsterObject.OnMove(navHit.position);
-            }
-            else
-            {
-                monsterObject.OnMove(transform.position);
+                monsterObject.OnIdle();
+
+                // 상태 제어
+                if (checkStateAsync != null)
+                {
+                    StopCoroutine(checkStateAsync);
+                }
+
+                checkStateAsync = CheckStateAsync();
+
+                StartCoroutine(checkStateAsync);
             }
         }
     }
+    #region 상태 제어 관련
+    private IEnumerator CheckStateAsync()
+    {
+        yield return new WaitForSeconds(Random.Range(monsterAIData.minSateTransitionTime, monsterAIData.maxStateTransitionTime));
+
+        switch (Random.Range(0, 2))
+        {
+            case 0: OnIdle(); break;
+            case 1: OnMove(); break;
+        }
+    }
+
+    // 아이들
+    private void OnIdle()
+    {
+        monsterObject.OnIdle();
+
+        if (checkStateAsync != null)
+        {
+            StopCoroutine(checkStateAsync);
+        }
+
+        checkStateAsync = CheckStateAsync();
+
+        StartCoroutine(checkStateAsync);
+    }
+
+    // 이동
+    private void OnMove()
+    {
+        hasArrived = false;
+
+        // 스폰 지점 기준으로 이동할 범위 계산
+        var randPoint = Random.insideUnitSphere * monsterAIData.insideUnitSphere;
+        randPoint.y = monsterObject.transform.position.y;
+
+        var respos = randPoint + monsterObject.transform.position;
+
+        // 네비 메쉬 지역안 기준으로 이동
+        NavMeshHit navHit;
+        if (NavMesh.SamplePosition(respos + randPoint, out navHit, 1000, NavMesh.AllAreas))
+        {
+            monsterObject.OnMove(navHit.position);
+        }
+    }
+    #endregion
 }
