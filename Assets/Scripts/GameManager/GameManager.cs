@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour, IGameSubject
     }
 
     private void Update()
-    {
+    {/*
         if (isCombat)
         {
             if (GameApplication.Instance.GameModel.RunTimeData.ReturnDatas<MonsterObject>(nameof(MonsterObject)).Length <= 0)
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour, IGameSubject
                     OnChapterClearEvent?.Invoke();
                 }
             }
-        }
+        }*/
     }
 
     // 전투 시작전 딜레이

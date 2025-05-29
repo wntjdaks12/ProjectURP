@@ -9,16 +9,32 @@ public class ChapterManager : MonoBehaviour
 
     public ChapterViewModel ChapterViewModel { get; private set; }
 
+    private List<bool> isExitMonsters;
+
+    private ChapterSpawnInfo chapterSpawnInfo;
+
     private void Awake()
     {
         ChapterViewModel = new ChapterViewModel();
+
+        isExitMonsters = new List<bool>();
+    }
+
+    private void Start()
+    {
+
+        StartCoroutine(asdAsync());
+    }
+
+    private void Update()
+    {
     }
 
     public void StartCurrentStage()
     {
         if (ChapterViewModel.ExistCurrentStage())
         {
-            Spawn();
+            //Spawn();
         }
     }
 
@@ -30,18 +46,37 @@ public class ChapterManager : MonoBehaviour
         }
     }
 
-    // 나중에 코드 위치 수정 스폰
-    private void Spawn()
+    private IEnumerator asdAsync()
     {
-        var chapterSpawnInfo = ChapterViewModel.GetChapterSpawnInfo();
-
+        chapterSpawnInfo = ChapterViewModel.GetChapterSpawnInfo();
         var spawnData = chapterSpawnInfo.spawnData;
 
         for (int i = 0; i < spawnData.spawnDataInfos.Count; i++)
         {
-            var spawnDataInfo = spawnData.spawnDataInfos[i];
+            isExitMonsters.Add(false);
+        }
 
-            GameApplication.Instance.EntityController.Spawn<Monster, MonsterObject>(spawnDataInfo.monsterId, spawnDataInfo.position, Quaternion.identity);
+        while (true)
+        {
+            for (int i = 0; i < isExitMonsters.Count; i++)
+            {
+                if (!isExitMonsters[i])
+                {
+                    var spawnDataInfo = spawnData.spawnDataInfos[i];
+
+                    var monsterObj = GameApplication.Instance.EntityController.Spawn<Monster, MonsterObject>(spawnDataInfo.monsterId, spawnDataInfo.position, Quaternion.identity);
+
+                    var index = i;
+                    monsterObj.Entity.OnDataRemove += (data) =>
+                    {
+                        isExitMonsters[index] = false;
+                    };
+
+                    isExitMonsters[i] = true;
+                }
+            }
+
+            yield return new WaitForSeconds(3f);
         }
     }
 }

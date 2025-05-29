@@ -11,7 +11,6 @@ public class CharacterMoveState : ICharacterState
 
     public void OnIdle(CharacterObject characterObject)
     {
-        UnityEngine.Debug.Log("asd");
         characterObject.SetState(CharacterIdleState.Instance);
 
         if (characterObject.animator != null) characterObject.animator.SetBool("IsMove", false);

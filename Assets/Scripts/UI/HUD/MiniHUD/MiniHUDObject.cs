@@ -21,6 +21,8 @@ public class MiniHUDObject : UIObject
         target.Character.OnDeathEvent += () => { Entity.OnRemoveData(); };
 
         UpdateUI();
+
+        OnHide();
     }
 
     private void LateUpdate()
