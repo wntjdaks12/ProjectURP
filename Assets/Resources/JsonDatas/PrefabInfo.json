@@ -12,6 +12,10 @@
     "path": "Prefabs/Characters/Monsters/Slime"
   },
   {
+    "id": 20002,
+    "path": "Prefabs/Characters/Monsters/KingSlime"
+  },
+  {
     "id": 40001,
     "path": "Prefabs/VFXs/Thundercry/Thundercry"
   },

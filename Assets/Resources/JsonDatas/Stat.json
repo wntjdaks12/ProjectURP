@@ -16,7 +16,7 @@
       },
       {
         "statType": 3,
-        "value": 5
+        "value": 15
       },
       {
         "statType": 4,
@@ -79,6 +79,23 @@
       {
         "statType": 0,
         "value": 100
+      },
+      {
+        "statType": 3,
+        "value": 3
+      },
+      {
+        "statType": 13,
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": 20002,
+    "stats": [
+      {
+        "statType": 0,
+        "value": 1000
       },
       {
         "statType": 3,

@@ -8,6 +8,16 @@
         "dropProbability": 100
       }
     ]
+  },
+  {
+    "id": 20002,
+    "dropItemDatas": [
+      {
+        "dropId": 80001,
+        "dropCount": 1,
+        "dropProbability": 100
+      }
+    ]
   }
 ]
   
