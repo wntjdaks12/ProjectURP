@@ -14,6 +14,8 @@ public class MonsterController : MonoBehaviour
 
     private MonsterAIData monsterAIData; // 몬스터 ai 데이터
 
+    private MiniHUDObject minihudObject;
+
     private void Awake()
     {
         Debug.Assert(monsterObject != null, "몬스터 오브젝트 없음");
@@ -34,6 +36,10 @@ public class MonsterController : MonoBehaviour
         {
             this.target = target;
         };
+
+        minihudObject = GameApplication.Instance.EntityController.Spawn<MiniHUD, MiniHUDObject>(110001, Camera.main.WorldToScreenPoint(monsterObject.MiniHUDNode.position), Quaternion.identity, UIManager.Instance.MiniHUDPanel);
+        minihudObject.Init(monsterObject, monsterObject.Monster.StatAbility);
+        minihudObject.OnHide();
 
         // 상태 코루틴 시작
         checkStateAsync = CheckStateAsync();
@@ -77,6 +83,8 @@ public class MonsterController : MonoBehaviour
                 StartCoroutine(checkStateAsync);
             }
         }
+
+        ControlMiniHUD(); // 미니 hud 제어
     }
     #region 상태 제어 관련
     private IEnumerator CheckStateAsync()
@@ -121,6 +129,21 @@ public class MonsterController : MonoBehaviour
         if (NavMesh.SamplePosition(respos + randPoint, out navHit, 1000, NavMesh.AllAreas))
         {
             monsterObject.OnMove(navHit.position);
+        }
+    }
+    #endregion
+    #region 미니 HUD 제어 관련
+    public void ControlMiniHUD()
+    {
+        var offset = PlayerManager.Instance.PlayerViewModel.HeroObject.transform.position - monsterObject.transform.position;
+
+        if (offset.sqrMagnitude < 80)
+        {
+            minihudObject.OnShow();
+        }
+        else
+        {
+            minihudObject.OnHide();
         }
     }
     #endregion

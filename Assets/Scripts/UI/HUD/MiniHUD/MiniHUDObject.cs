@@ -43,6 +43,16 @@ public class MiniHUDObject : UIObject
         }
     }
 
+    public void OnShow()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void OnHide()
+    {
+        gameObject.SetActive(false);
+    }
+
     #region UI ฐüทร
     public void UpdateUI()
     {

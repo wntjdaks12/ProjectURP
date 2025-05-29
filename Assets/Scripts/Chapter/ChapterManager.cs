@@ -41,9 +41,7 @@ public class ChapterManager : MonoBehaviour
         {
             var spawnDataInfo = spawnData.spawnDataInfos[i];
 
-            var monsterObj = GameApplication.Instance.EntityController.Spawn<Monster, MonsterObject>(spawnDataInfo.monsterId, spawnDataInfo.position, Quaternion.identity);
-            var miniHUDObj = GameApplication.Instance.EntityController.Spawn<MiniHUD, MiniHUDObject>(110001, Camera.main.WorldToScreenPoint(monsterObj.MiniHUDNode.position), Quaternion.identity, UIManager.Instance.MiniHUDPanel);
-            miniHUDObj.Init(monsterObj, monsterObj.Monster.StatAbility);
+            GameApplication.Instance.EntityController.Spawn<Monster, MonsterObject>(spawnDataInfo.monsterId, spawnDataInfo.position, Quaternion.identity);
         }
     }
 }
